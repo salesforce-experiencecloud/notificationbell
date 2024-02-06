@@ -33,6 +33,7 @@ public with sharing class NotificationsTrayController {
         webReq.setEndpoint(endpoint + '?' + String.join(filterList, '&'));
     
         HttpResponse res = h.send(webReq);
+        System.debug('new location: ' + res.getHeader('Location'));
         String response = res.getbody();
         System.debug('response: ' + response);
         try {
@@ -252,9 +253,12 @@ public with sharing class NotificationsTrayController {
         webReq.setHeader('Authorization','Bearer ' + UserInfo.getSessionId());
         
         String domainPath = System.Site.getBaseSecureUrl();
+        String domainPathPrefix = System.Site.getPathPrefix();
 
         domainPath = (domainPath.endsWith('/s')) ? domainPath.left(domainPath.length() - 2) : domainPath;
         
+        domainPath = domainPath.replace(domainPathPrefix, '');
+
         String endpoint = domainPath + '/services/data/v56.0/connect/notifications';
 
         // replace endpoint url
