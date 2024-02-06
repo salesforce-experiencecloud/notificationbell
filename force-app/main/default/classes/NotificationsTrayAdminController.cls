@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
 public with sharing class NotificationsTrayAdminController {
 ///services/data/v58.0/tooling/query?q=select+id,EndpointUrl,IsActive+FROM+RemoteProxy+WHERE+IsActive=TRUE+AND+EndpointUrl+LIKE+%27%25cspoc1.sfdxp.com%25%27
 
@@ -119,8 +126,12 @@ public with sharing class NotificationsTrayAdminController {
         HttpRequest webReq = new HttpRequest();
         webReq.setMethod(methodType);
         PageReference notificationTrayAdminPage = Page.NotificationTrayAdmin;
-        String sessionId = notificationTrayAdminPage.getContent().toString().replaceAll('\n','');
-        
+        String sessionId = System.UserInfo.getSessionId();
+        if(!System.Test.isRunningTest())
+        {
+            sessionId = notificationTrayAdminPage.getContent().toString().replaceAll('\n','');
+        }
+
         webReq.setHeader('Authorization','Bearer ' + sessionId);
         
         String domainPath = System.URL.getOrgDomainUrl().toExternalForm();

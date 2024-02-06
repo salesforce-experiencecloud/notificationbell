@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
 public with sharing class NotificationsTrayController {
     
     @AuraEnabled
@@ -79,7 +86,7 @@ public with sharing class NotificationsTrayController {
 
                 Map<String,Object> responseObject = (Map<String,Object>) JSON.deserializeUntyped(response);
             
-                resObject.put('mostRecentNotifications',responseObject.get('notifications'));
+                resObject.put('mostRecentNotifications',filterOutNotifications(responseObject.get('notifications'), notificationType));
                 //resObject.put('siteId', System.Site.getSiteId());
                 //resObject.put('baseUrl', System.Site.getBaseUrl());
                 //resObject.put('baseSecureUrl',System.Site.getBaseSecureUrl());
@@ -207,21 +214,6 @@ public with sharing class NotificationsTrayController {
         }
 
     }
-
-    @AuraEnabled
-    public static void markNotificationCardsSeen(List<Object> notificationIds) {
-        
-    }
-
-    @AuraEnabled
-    public static void markNotificationSeen(String notificationId) {
-        
-    }
-
-    @AuraEnabled
-    public static Object getInitializationValues() {
-        return null;
-    }
     
 
     @AuraEnabled
@@ -261,10 +253,8 @@ public with sharing class NotificationsTrayController {
         
         String domainPath = System.Site.getBaseSecureUrl();
 
-        if(domainPath.endsWith('/s'))
-        {
-            domainPath = domainPath.left(domainPath.length() - 2);
-        }
+        domainPath = (domainPath.endsWith('/s')) ? domainPath.left(domainPath.length() - 2) : domainPath;
+        
         String endpoint = domainPath + '/services/data/v56.0/connect/notifications';
 
         // replace endpoint url
@@ -274,61 +264,3 @@ public with sharing class NotificationsTrayController {
 
 
 }
-
-
-
-/*
- * Copyright 2022 salesforce.com, inc.
- * All Rights Reserved
- * Company Confidential
- */
-/*
- * Wrapper class to call APIs related to Notifications Tray from LWC/Aura components.
- *
- * @author ddeshmukh
- * @since 242
- */
-/*
-@SfdcOnly
-public with sharing class NotificationsTrayController {
-    @AuraEnabled
-    public static Object getNotifications(Date currentLastActivity,String notificationType, Integer count) {
-        return (Object) java:notifications.util.NotificationsTrayControllerApex.getNotifications(currentLastActivity,notificationType,count);
-    }
-
-    @AuraEnabled
-    public static List<Object> getOlderNotifications(Date before) {
-        return (List<Object>) java:notifications.util.NotificationsTrayControllerApex.getOlderNotifications(before);
-    }
-
-    @AuraEnabled
-    public static void markNotificationsRead(Date before, List<Object> exceptForIds) {
-        java:notifications.util.NotificationsTrayControllerApex.markNotificationsRead(before,exceptForIds);
-    }
-
-    @AuraEnabled
-    public static void markNotificationsSeen(Date before, List<Object> exceptForIds) {
-        java:notifications.util.NotificationsTrayControllerApex.markNotificationsSeen(before,exceptForIds);
-    }
-
-    @AuraEnabled
-    public static void markNotificationCardsSeen(List<Object> notificationIds) {
-        java:notifications.util.NotificationsTrayControllerApex.markNotificationCardsSeen(notificationIds);
-    }
-
-    @AuraEnabled
-    public static void markNotificationRead(String notificationId) {
-        java:notifications.util.NotificationsTrayControllerApex.markNotificationRead(notificationId);
-    }
-
-    @AuraEnabled
-    public static void markNotificationSeen(String notificationId) {
-        java:notifications.util.NotificationsTrayControllerApex.markNotificationSeen(notificationId);
-    }
-
-    @AuraEnabled
-    public static Object getInitializationValues() {
-        return (Object) java:notifications.util.NotificationsTrayControllerApex.getInitializationValues();
-    }
-}
-*/
