@@ -1,0 +1,25 @@
+<template>
+    <template if:true={notificationsEnabled}>
+        <div class="rootWrapper">
+            <div class={rootClass} tabindex="-1" onblur={handleOnBlur} onnotification_event={handleNotificationEvent}>
+                <c-notifications-icon onclick={handleIconClick} custom-styles={customStyles} count={_unreadCount}></c-notifications-icon>
+                <template if:true={isPanelVisible}>
+                    <c-notifications-panel custom-styles={customStyles} loaded={_hasLoaded} notifications={_notifications} showerror={_showError} notification-header-text={notificationHeaderText}
+                    notification-header-mark-all-read={notificationHeaderMarkAllRead} notification-mark-read-text={notificationMarkReadText}
+                    notification-mark-unread-text={notificationMarkUnreadText} notification-image-hide={notificationImageHide} notification-image-override={notificationImageOverride}
+                    notification-image-override-url={notificationImageOverrideUrl}></c-notifications-panel>
+                </template>
+            </div>
+            <template if:true={showToast}>
+                <div class="slds-align_absolute-center slds-p-horizontal_x-small">
+                    <p class="errortoast">
+                        <lightning-icon class="slds-m-right_small" icon-name="utility:error" size="small"> </lightning-icon>
+                        {toastMessage}&nbsp;
+                        <lightning-button-icon icon-name="utility:close" onclick={hideToast}></lightning-button-icon>
+                        <span class="slds-assistive-text">{toastMessage}</span>
+                    </p>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

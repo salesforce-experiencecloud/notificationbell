@@ -1,0 +1,55 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+ 
+:host {
+    --lwc-colorBackgroundNotificationNewFallback: rgb(243, 243, 243);
+    --lwc-colorBackgroundRowHoverFallback: rgb(243, 243, 243);
+    --lwc-colorBackgroundAltFallback: rgb(255, 255, 255);
+    --lwc-colorBorderSeparatorAltFallback: rgb(174, 174, 174);
+    --lwc-spacingXxSmallFallback: 0.25rem;
+    --lwc-spacingXSmallFallback: 0.5rem;
+    --lwc-spacingSmallFallback: 0.75rem;
+    --lwc-spacingMediumFallback: 1rem;
+    --lwc-borderRadiusMediumFallback: 0.25rem;
+    --lwc-colorTextDefaultFallback: rgb(3, 45, 96);
+    --lwc-fontWeightLightFallback: 300;
+    --lwc-fontWeightBoldFallback: 700;
+    --lwc-fontSizeMediumFallback: 0.8125rem;
+    --lwc-fontWeightRegularFallback: 400;
+    --lwc-colorTextWeakFallback: rgb(116, 116, 116);
+    --lwc-fontSizeXSmallFallback: 0.625rem;
+    --lwc-fontSizeSmallFallback: 0.75rem;
+    --lwc-fontSizeLargeFallback: 1rem;
+    --lwc-shadowDropDownFallback: 0 2px 3px 0 rgba(0, 0, 0, 0.16);
+    --lwc-borderWidthThinFallback: 1px;
+    --lwc-colorBorderFallback: rgb(174, 174, 174);
+    --lwc-colorTextLinkFallback: rgb(1, 118, 211);
+    --lwc-borderRadiusLargeFallback: 0.5rem;
+    --lwc-colorBackgroundNotificationBadgeFallback: rgb(234, 0, 30);
+    --lwc-lineHeightResetFallback: 1;
+    --lwc-squareIconUtilitySmallFallback: 1rem;
+    --lwc-colorTextInverseFallback: rgb(255, 255, 255);
+    --lwc-fontFamilyFallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    --lwc-colorTextErrorFallback: rgb(234, 0, 30);
+    --lwc-colorTextIconInverseFallback: rgb(255,255,255);
+    --lwc-colorBackgroundImageOverlayFallback: rgba(0, 0, 0, 0.4);
+}
+
+.rootWrapper {
+    display: flex;
+}
+
+.notif-horizontal-align {
+    margin: var(--dxp-c-notification-margin, inherit);
+}
+
+.errortoast {
+    /* @sldsValidatorAllow */ background-color: var(--lwc-colorBackgroundImageOverlayFallback);
+    /* @sldsValidatorAllow */ color: var(--lwc-colorTextIconInverse, var(--lwc-colorTextIconInverseFallback));
+    /* @sldsValidatorAllow */ padding: var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback)) var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback)) var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback)) var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback));
+    /* @sldsValidatorAllow */ --sds-c-icon-color-foreground-default: var(--lwc-colorTextIconInverse, var(--lwc-colorTextIconInverseFallback));
+}

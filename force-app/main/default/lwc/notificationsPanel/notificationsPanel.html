@@ -1,0 +1,21 @@
+<template>
+    <div class={rootPanelClass}>
+        <c-notifications-title custom-styles={customStyles} notifications={_notifications} notification-header-text={_notificationHeaderText}
+        notification-header-mark-all-read={_notificationHeaderMarkAllRead}></c-notifications-title>
+        <div>
+            <template if:true={_hasLoaded}>
+                <template if:true={hasNotifications}>
+                    <c-notifications-list custom-styles={customStyles} notifications={_notifications} showerror={_showError} notification-mark-read-text={_notificationMarkReadText}
+                    notification-mark-unread-text={_notificationMarkUnreadText} notification-image-hide={_notificationImageHide} notification-image-override={_notificationImageOverride}
+                    notification-image-override-url={_notificationImageOverrideUrl}></c-notifications-list>
+                </template>
+                <template if:false={hasNotifications}>
+                    <span tabindex="0" class="unsNotificationsPanel noNotifications">{labels.NO_NOTIFICATIONS_MESSAGE}</span>
+                </template>
+            </template>
+            <template if:false={_hasLoaded}>
+                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+            </template>
+        </div>
+    </div>
+</template>

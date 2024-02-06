@@ -1,0 +1,48 @@
+/*
+ * Copyright 2022 salesforce.com, inc.
+ * All Rights Reserved
+ * Company Confidential
+ */
+.buttonIcon {
+    /* @sldsValidatorAllow */ height: var(--dxp-c-button-size, 24px);
+    /* @sldsValidatorAllow */ width: var(--dxp-c-button-size, 24px);
+}
+
+.buttonIcon:hover svg {
+    color: var(--dxp-c-user-override-hover, var(--dxp-g-neutral-3));
+}
+
+.buttonIcon:focus svg {
+    color: var(--dxp-c-user-override-focus, var(--dxp-g-neutral-3));
+}
+
+.buttonIcon:active svg {
+    color: var(--dxp-c-user-override-active, var(--dxp-g-neutral-3));
+}
+
+.notifIcon {
+    /* @sldsValidatorAllow */ height: var(--dxp-c-icon-size, 20px);
+    /* @sldsValidatorAllow */ width: var(--dxp-c-icon-size, 20px);
+}
+
+.countDot {
+    position: absolute;
+    border-radius: var(--lwc-borderRadiusCircle, 50%);
+    right: 5px;
+    top: 5px;
+}
+
+.counterLabel {
+    /* @sldsValidatorAllow */ line-height: var(--lwc-lineHeightReset, var(--lwc-lineHeightResetFallback));
+    /* @sldsValidatorAllow */ width: var(--lwc-squareIconUtilitySmall, var(--lwc-squareIconUtilitySmallFallback));
+    /* @sldsValidatorAllow */ height: var(--lwc-squareIconUtilitySmall, var(--lwc-squareIconUtilitySmallFallback));
+    /* @sldsValidatorAllow */ padding: 0 var(--lwc-spacingXxSmall, var(--lwc-spacingXxSmallFallback));
+
+    /* @sldsValidatorAllow */ color: var(--lwc-colorTextInverse, var(--lwc-colorTextInverseFallback));
+    /* @sldsValidatorAllow */ font-family: var(--lwc-fontFamily,  var(--lwc-fontFamilyFallback));
+    /* @sldsValidatorAllow */ font-weight: var(--lwc-fontWeightBold, var(--lwc-fontWeightBoldFallback));
+    /* @sldsValidatorAllow */ font-size: var(--lwc-fontSizeXSmallFallback);
+    /* To align the text vertically */
+    vertical-align: middle;
+    display: table-cell;
+}

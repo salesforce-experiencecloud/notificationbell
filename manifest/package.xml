@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>NotificationsTrayAdminController</members>
+        <members>NotificationsTrayController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>NotificationTrayAdmin</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>notifications</members>
+        <members>notificationsCpe</members>
+        <members>notificationsIcon</members>
+        <members>notificationsList</members>
+        <members>notificationsListRow</members>
+        <members>notificationsNavigation</members>
+        <members>notificationsPanel</members>
+        <members>notificationsStore</members>
+        <members>notificationsTitle</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <version>59.0</version>
+</Package>

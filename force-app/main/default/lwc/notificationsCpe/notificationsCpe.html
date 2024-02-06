@@ -1,0 +1,363 @@
+<template>
+    <lightning-tabset>
+        <lightning-tab label="General">
+            
+            <lightning-accordion allow-multiple-sections-open
+            active-section-name=remoteSiteConfig>
+                <lightning-accordion-section name="remoteSiteConfig" label="Remote Site Config">
+                    <div class="slds-p-left_small slds-p-top_medium">
+                        
+                        <div class="slds-text-body_small slds-m-bottom_large">
+                            This configuration will query / modify the Remote Site Settings metadata in your org. 
+                            You can also configure this from <a href={remoteSiteSetupUrl} target="_blank">Salesforce Setup > Security > Remote Site Settings</a>
+                            This component will not work if your site domain is not added to remote site settings.
+                        </div>
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-select
+                            name="domain"
+                            label="Select Your Site's Domain"
+                            value={domainSelected}
+                            options={domainOptions}
+                            onchange={handleDomainChange}
+                            required class="domain"></lightning-select>
+                        </div>
+
+                        <template if:true={showDomainSuccessMsg}>
+                            <div class="slds-text-body_small slds-text-color_success slds-m-bottom_medium">Your domain is properly configured in Remote Site Settings.</div>
+                        </template>
+                        <template if:true={showDomainWarningMsg}>
+                            <div class="slds-text-body_small domainWarning slds-m-bottom_medium slds-p-around_xx-small">Please select your site's domain.</div>
+                        </template>
+
+                        <button class="slds-button slds-button_brand" disabled={hideAddDomainButton} onclick={handleAddToRemoteSites}>Add to Remote Sites</button>
+
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+
+            <lightning-accordion allow-multiple-sections-open
+            active-section-name=generalNotificationConfig>
+                <lightning-accordion-section name="generalNotificationConfig" label="Notification Filter">
+                    <div class="slds-p-left_small slds-p-top_medium">
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-checkbox-group
+                            name="customNotificationType"
+                            label="Select Notification Types to filter by"
+                            value={customNotificationTypeSelected}
+                            options={customNotificationTypeOptions}
+                            onchange={handleCustomNotificationTypeChange}
+                            class="customNotificationType"></lightning-checkbox-group>
+                        </div>
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+            <lightning-accordion allow-multiple-sections-open
+            active-section-name=generalNotificationImageConfig>
+                <lightning-accordion-section name="generalNotificationImageConfig" label="Notification Image Config">
+                    <div class="slds-p-left_small slds-p-top_medium">
+
+                        <lightning-input type="toggle" label="Hide Notification Image" class="notificationImageHide slds-m-bottom_medium" checked={notificationImageHide} 
+                            onchange={handleNotificationImageHideChange}></lightning-input>
+
+                        <lightning-input type="toggle" label="Override Notification Image" class="notificationImageOverride slds-m-bottom_medium" checked={notificationImageOverride} 
+                            onchange={handleNotificationImageOverrideChange}></lightning-input>
+
+                        <template if:true={notificationImageOverride}>
+                            <lightning-input type="text" label="Notification Image Override Url" class="notificationImageOverrideUrl slds-m-bottom_medium" value={notificationImageOverrideUrl} 
+                                onchange={handleNotificationImageOverrideUrlChange} 
+                                field-level-help="Enter Url for the notification image to override with. (For best results, ensure the image dimensions are equal / a square.) Example: /img/notificationsEmail/custom_notification.png" required></lightning-input>
+                        </template>
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+        </lightning-tab>
+
+
+        <lightning-tab label="Labels">
+            
+            <lightning-accordion allow-multiple-sections-open
+            active-section-name=notificationPanelHeaderLabels>
+                <lightning-accordion-section name="notificationPanelHeaderLabels" label="Notification Panel Header">
+                    <div class="slds-p-left_small slds-p-top_medium">
+
+                        <lightning-input type="text" label="Header Text" class="notificationHeaderText slds-m-bottom_medium" value={notificationHeaderText} 
+                        onchange={handleNotificationHeaderTextChange} field-level-help="Label for the Notification Header Panel text. Default: Notifications" required></lightning-input>
+
+                        <lightning-input type="text" label="Header Mark All Read" class="notificationHeaderMarkAllRead slds-m-bottom_medium" value={notificationHeaderMarkAllRead} 
+                        onchange={handleNotificationHeaderMarkAllReadChange} field-level-help="Label for the Mark All Read text in the Header Panel text. Default: Mark All Read" required></lightning-input>
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+
+            <lightning-accordion allow-multiple-sections-open
+            active-section-name=notificationLabels>
+                <lightning-accordion-section name="notificationLabels" label="Notification">
+                    <div class="slds-p-left_small slds-p-top_medium">
+
+                        <lightning-input type="text" label="Mark Read Text" class="notificationMarkReadText slds-m-bottom_medium" value={notificationMarkReadText} 
+                        onchange={handleNotificationMarkReadTextChange} field-level-help="Label for the Notification Mark Read text. Default: Mark Read" required></lightning-input>
+
+                        <lightning-input type="text" label="Mark Unread Text" class="notificationMarkUnreadText slds-m-bottom_medium" value={notificationMarkUnreadText} 
+                        onchange={handleNotificationMarkUnreadTextChange} field-level-help="Label for the Notification Mark Unread text. Default: Mark Unread" required></lightning-input>
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+
+        </lightning-tab>
+
+
+        <lightning-tab label="Styles">
+            <!-- Bell Icon Configuration  -->
+            <lightning-accordion allow-multiple-sections-open
+            active-section-name=bellIconConfig>
+                <lightning-accordion-section name="bellIconConfig" label="Bell Icon">
+                    <div class="slds-p-left_small slds-p-top_medium">
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-select
+                            name="bellIconAlignment"
+                            label="Alignment"
+                            value={bellIconAlignmentSelected}
+                            options={bellIconAlignmentOptions}
+                            onchange={handleBellIconAlignmentChange}
+                            required class="bellIconAlignment"></lightning-select>
+                        </div>
+
+                        <lightning-input type="number" label="Size (px)" min="18" max="30" step="1" class="bellIconSize slds-m-bottom_medium" value={bellIconSize} 
+                            onchange={handleBellIconSizeChange} field-level-help="Set the size in pixels of the bell icon, between 18 and 30 pixels. Example: 24" required></lightning-input>
+
+                        <lightning-input type="color" label="Counter Color" class="bellIconCounterColor slds-m-bottom_medium" value={bellIconCounterColor} 
+                            onchange={handleBellIconCounterColorChange} field-level-help="Set the notification counter background color. Example: #EA001E"></lightning-input>
+                        
+                        <lightning-input type="color" label="Counter Number Color" class="bellIconCounterNumberColor slds-m-bottom_medium" value={bellIconCounterNumberColor} 
+                            onchange={handleBellIconCounterNumberColorChange} field-level-help="Set the notification counter number color. Example: #FFFFFF"></lightning-input>
+
+                        <lightning-input type="color" label="Icon Color" class="bellIconDefaultIconColor slds-m-bottom_medium" value={bellIconDefaultIconColor} 
+                            onchange={handleBellIconDefaultIconColorChange} field-level-help="Set the bell icon color. Example: #FFFFFF"></lightning-input>
+
+                        <lightning-input type="color" label="Icon Hover Color" class="bellIconHoverColor slds-m-bottom_medium" value={bellIconHoverColor} 
+                            onchange={handleBellIconHoverColorChange} field-level-help="Set the bell icon hover color. Example: #FFFFFF"></lightning-input>
+
+                        <lightning-input type="color" label="Icon Focus Color" class="bellIconFocusColor slds-m-bottom_medium" value={bellIconFocusColor} 
+                            onchange={handleBellIconFocusColorChange} field-level-help="Set the bell icon focus color. Example: #FFFFFF"></lightning-input>
+
+                        <lightning-input type="color" label="Icon Active Color" class="bellIconActiveColor slds-m-bottom_medium" value={bellIconActiveColor} 
+                            onchange={handleBellIconActiveColorChange} field-level-help="Set the bell icon active color. Example: #FFFFFF"></lightning-input>
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+
+
+            <!-- Notification Panel Body Configuration  -->
+            <lightning-accordion allow-multiple-sections-open
+            active-section-name=panelBodyConfig>
+                <lightning-accordion-section name="panelBodyConfig" label="Notification Panel Body">
+                    <div class="slds-p-left_small slds-p-top_medium">
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-select
+                            name="bodyDropdownAlignment"
+                            label="Alignment"
+                            value={bodyDropdownAlignmentSelected}
+                            options={bellIconAlignmentOptions}
+                            onchange={handleBodyDropdownAlignmentChange}
+                            required class="bodyDropdownAlignment"></lightning-select>
+                        </div>
+
+
+                        <lightning-input type="color" label="Notification Panel Background Color" class="trayBodyColor slds-m-bottom_medium" value={trayBodyColor} 
+                            onchange={handleTrayBodyColorChange} field-level-help="Set the notification panel background color. Example: #EA001E"></lightning-input>
+                        
+                        <lightning-input type="color" label="Notification Hover Color" class="notificationHoverColor slds-m-bottom_medium" value={notificationHoverColor} 
+                            onchange={handleNotificationHoverColorChange} field-level-help="Set the notification hover color. Example: #FFFFFF"></lightning-input>
+
+                        <lightning-input type="color" label="Notification Unread Color" class="notificationUnreadColor slds-m-bottom_medium" value={notificationUnreadColor} 
+                            onchange={handleNotificationUnreadColorChange} field-level-help="Set the unread notification color. Example: #FFFFFF"></lightning-input>
+
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+
+
+            <!-- Notification Panel Header Configuration  -->
+            <lightning-accordion allow-multiple-sections-open
+            active-section-name=panelHeaderConfig>
+                <lightning-accordion-section name="panelHeaderConfig" label="Notification Panel Header">
+                    <div class="slds-p-left_small slds-p-top_medium">
+
+                        <lightning-input type="color" label="Notification Panel Header Background Color" class="trayHeaderColor slds-m-bottom_medium" value={trayHeaderColor} 
+                            onchange={handleTrayHeaderColorChange} field-level-help="Set the notification panel header background color. Example: #EA001E"></lightning-input>
+
+                        <lightning-input type="color" label="Notification Label Text Color" class="notifLabelTextColor slds-m-bottom_medium" value={notifLabelTextColor} 
+                            onchange={handleNotifLabelTextColorChange} field-level-help="Set the notification label text color. Example: #EA001E"></lightning-input>
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-select
+                            name="notifLabelTextStyle"
+                            label="Label Text Style"
+                            value={notifLabelTextStyleSelected}
+                            options={textStyleOptions}
+                            onchange={handleNotifLabelTextStyleChange}
+                            required class="notifLabelTextStyle"></lightning-select>
+                        </div>
+
+                        <lightning-input type="color" label="Mark All Read Text Color" class="markAllReadTextColor slds-m-bottom_medium" value={markAllReadTextColor} 
+                        onchange={handleMarkAllReadTextColorChange} field-level-help="Set the Mark All Read text color. Example: #EA001E"></lightning-input>
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-select
+                            name="markAllReadLabelTextStyle"
+                            label="Mark All Read Text Style"
+                            value={markAllReadLabelTextStyleSelected}
+                            options={textStyleOptions}
+                            onchange={handleMarkAllReadLabelTextStyleChange}
+                            required class="markAllReadLabelTextStyle"></lightning-select>
+                        </div>
+
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+
+
+
+            <!-- Notification Configuration  -->
+            <lightning-accordion allow-multiple-sections-open
+            active-section-name=notificationConfig>
+                <lightning-accordion-section name="notificationConfig" label="Notification">
+                    <div class="slds-p-left_small slds-p-top_medium">
+
+                        <lightning-input type="color" label="Notification Title Color" class="notificationTitleColor slds-m-bottom_medium" value={notificationTitleColor} 
+                            onchange={handleNotificationTitleColorChange} field-level-help="Set the notification title color. Example: #EA001E"></lightning-input>
+
+                        <lightning-input type="color" label="Notification Title Hover Color" class="notificationTitleHoverColor slds-m-bottom_medium" value={notificationTitleHoverColor} 
+                            onchange={handleNotificationTitleHoverColorChange} field-level-help="Set the notification title hover color. Example: #EA001E"></lightning-input>
+
+                        <lightning-input type="color" label="Unread Notification Title Color" class="notificationTitleUnreadColor slds-m-bottom_medium" value={notificationTitleUnreadColor} 
+                            onchange={handleNotificationTitleUnreadColorChange} field-level-help="Set the unread notification title color. Example: #EA001E"></lightning-input>
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-select
+                            name="notificationTitleTextStyle"
+                            label="Notification Title Text Style"
+                            value={notificationTitleTextStyleSelected}
+                            options={textStyleOptions}
+                            onchange={handleNotificationTitleTextStyleChange}
+                            required class="notificationTitleTextStyle"></lightning-select>
+                        </div>
+
+
+                        <lightning-input type="color" label="Notification Body Color" class="notificationBodyColor slds-m-bottom_medium" value={notificationBodyColor} 
+                            onchange={handleNotificationBodyColorChange} field-level-help="Set the notification body text color. Example: #EA001E"></lightning-input>
+
+                        <lightning-input type="color" label="Notification Body Hover Color" class="notificationBodyHoverColor slds-m-bottom_medium" value={notificationBodyHoverColor} 
+                            onchange={handleNotificationBodyHoverColorChange} field-level-help="Set the notification body text hover color. Example: #EA001E"></lightning-input>
+
+                        <lightning-input type="color" label="Unread Notification Body Color" class="notificationBodyUnreadColor slds-m-bottom_medium" value={notificationBodyUnreadColor} 
+                            onchange={handleNotificationBodyUnreadColorChange} field-level-help="Set the unread notification body text color. Example: #EA001E"></lightning-input>
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-select
+                            name="notificationBodyTextStyle"
+                            label="Notification Body Text Style"
+                            value={notificationBodyTextStyleSelected}
+                            options={textStyleOptions}
+                            onchange={handleNotificationBodyTextStyleChange}
+                            required class="notificationBodyTextStyle"></lightning-select>
+                        </div>
+
+
+                        <lightning-input type="color" label="Notification Date/Time Color" class="notificationDateTimeColor slds-m-bottom_medium" value={notificationDateTimeColor} 
+                            onchange={handleNotificationDateTimeColorChange} field-level-help="Set the notification Date/Time text color. Example: #EA001E"></lightning-input>
+
+                        <lightning-input type="color" label="Notification Date/Time Hover Color" class="notificationDateTimeHoverColor slds-m-bottom_medium" value={notificationDateTimeHoverColor} 
+                            onchange={handleNotificationDateTimeHoverColorChange} field-level-help="Set the notification Date/Time text hover color. Example: #EA001E"></lightning-input>
+
+                        <lightning-input type="color" label="Unread Notification Date/Time Color" class="notificationDateTimeUnreadColor slds-m-bottom_medium" value={notificationDateTimeUnreadColor} 
+                            onchange={handleNotificationDateTimeUnreadColorChange} field-level-help="Set the unread notification Date/Time text color. Example: #EA001E"></lightning-input>
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-select
+                            name="notificationDateTimeTextStyle"
+                            label="Notification Date/Time Text Style"
+                            value={notificationDateTimeTextStyleSelected}
+                            options={textStyleOptions}
+                            onchange={handleNotificationDateTimeTextStyleChange}
+                            required class="notificationDateTimeTextStyle"></lightning-select>
+                        </div>
+
+
+
+                        <lightning-input type="color" label="Notification Mark Read Color" class="notificationMarkReadColor slds-m-bottom_medium" value={notificationMarkReadColor} 
+                        onchange={handleNotificationMarkReadColorChange} field-level-help="Set the notification Mark Read/Unread text color. Example: #EA001E"></lightning-input>
+
+                        <lightning-input type="color" label="Notification Mark Unread Color" class="notificationMarkReadUnreadColor slds-m-bottom_medium" value={notificationMarkReadUnreadColor} 
+                            onchange={handleNotificationMarkReadUnreadColorChange} field-level-help="Set the unread notification Mark Read text color. Example: #EA001E"></lightning-input>
+
+                        <div class="slds-m-bottom_medium">
+                            <lightning-select
+                            name="notificationMarkReadTextStyle"
+                            label="Notification Mark Read/Unread Text Style"
+                            value={notificationMarkReadTextStyleSelected}
+                            options={textStyleOptions}
+                            onchange={handleNotificationMarkReadTextStyleChange}
+                            required class="notificationMarkReadTextStyle"></lightning-select>
+                        </div>
+                        
+
+
+                    </div>
+                </lightning-accordion-section>
+            </lightning-accordion>
+
+        </lightning-tab>
+
+    </lightning-tabset>
+
+
+
+    <template if:true={showModal}>
+        <section role="dialog" tabindex="-1" class={modalClass} aria-modal="true">
+            <div class="slds-modal__container" onclick={handleModalRegion}>
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" onclick={handleClose}>
+                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                        <use xlink:href={iconUrl}></use>
+                    </svg>
+                    <span class="slds-assistive-text">Cancel and close</span>
+                </button>
+                <div class="slds-modal__header">
+                    Check Remote Site Settings
+                </div>
+                <div class="slds-modal__content">
+                    Please select your site's domain:
+                </div>
+                <div class="slds-modal__footer">
+                    <button class="slds-button slds-button_brand" onclick={handleClose}>Close</button>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template if:true={displayBackdrop}>
+        <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+
+
+
+</template>

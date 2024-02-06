@@ -1,0 +1,23 @@
+<!--
+  ~ Copyright 2022 salesforce.com, inc.
+  ~ All Rights Reserved
+  ~ Company Confidential
+  -->
+<template>
+    <button onclick={onBellIconClickHandler} class={buttonClass} title="no new notifications" aria-live="assertive" aria-atomic="true">
+        <template if:true={hasCustomImageUrl}>
+            <img src={customStyles.imageUrl} class="slds-button__icon notifIcon" aria-hidden="true">
+        </template>
+        <template if:false={hasCustomImageUrl}>
+            <span class="defaultIcon">
+                <svg class="slds-button__icon notifIcon" aria-hidden="true">
+                    <use xlink:href={defaultNotificationIconUrl}></use>
+                </svg>
+            </span>
+        </template>
+        <span class={countDotClass}>
+            <span class="counterLabel">{_counterLabel}</span>
+        </span>
+        <span class="slds-assistive-text">{unseenNotificationsLabel}</span>
+    </button>
+</template>

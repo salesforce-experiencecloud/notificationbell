@@ -1,0 +1,54 @@
+<template>
+    <li class={listItemClass} role="presentation">
+        <a class="notification-link" href="javascript:void(0);" onclick={handleOnClick}>
+            <div class="notification-content">
+                <template if:false={_notificationImageHide}>
+                    <div class="notification-avatar">
+                        <template if:true={_notificationImageOverride}>
+                            <img src={_notificationImageOverrideUrl} alt="" class="notification-icon"/>
+                        </template>
+                        <template if:false={_notificationImageOverride}>
+                            <img src={_notification.image} alt="" class="notification-icon"/>
+                        </template>
+                    </div>
+                </template>
+                <div class="notification-content">
+                    <template if:true={hasTitleOrBody}>
+                        <template if:true={hasTitle}>
+                            <lightning-formatted-text class="notification-text-title" value={_notification.messageTitle}></lightning-formatted-text>
+                        </template>
+                        <lightning-formatted-text class="notification-text" value={_notification.messageBody}></lightning-formatted-text>
+                    </template>
+                    <template if:false={hasTitleOrBody}>
+                        <lightning-formatted-text class="notification-text" value={_notification.message}></lightning-formatted-text>
+                    </template>
+                    <span title={fullDateTimeText}>
+                        <template if:true={shouldDisplayFullDate}>
+                            <lightning-formatted-text class="notification-age" value={date}></lightning-formatted-text>
+                        </template>
+                        <template if:false={shouldDisplayFullDate}>
+                            <lightning-relative-date-time class="notification-age" value={date}></lightning-relative-date-time>
+                        </template>
+                        <template if:true={hasNetworkText}>
+                            <lightning-formatted-text class="notification-age" value={optionalNetworkText}></lightning-formatted-text>
+                        </template>
+                        <span class={hasBeenReadClass}>
+                            <span class="assistive-unread-mark" aria-hidden="true">&#9679;</span>
+                            <span class="assistiveText">{labels.UNREAD_NOTIFICATION}</span>
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </a>
+        <div class="titleAction trayMarkAllRead slds-p-around_small slds-m-left_xx-small">
+            <a class="notification-mark-read" href="javascript:void(0);" onclick={handleReadUnreadClick}>
+                <template if:true={notification.read}>
+                    {_notificationMarkUnreadText}
+                </template>
+                <template if:false={notification.read}>
+                    {_notificationMarkReadText}
+                </template>
+            </a>
+        </div>
+    </li>
+</template>

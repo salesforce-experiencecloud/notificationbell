@@ -1,0 +1,27 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+ 
+.noNotifications {
+    display: block;
+    /* @sldsValidatorAllow */ color: var(--lwc-colorTextWeak, var(--lwc-colorTextWeakFallback));
+    /* @sldsValidatorAllow */ box-shadow: var(--lwc-shadowDropDown, var(--lwc-shadowDropDownFallback));
+    /* @sldsValidatorAllow */ font-size: var(--lwc-fontSizeMediumFallback);
+    /* @sldsValidatorAllow */ font-weight: var(--lwc-fontWeightRegular, var(--lwc-fontWeightRegularFallback));
+    text-align: center;
+    /* @sldsValidatorAllow */ padding: 20px;
+}
+
+.notificationPanel {
+    width: 432px;
+}
+
+div.notificationPanel.slds-dropdown {
+    padding: 0;
+    border: none;
+    min-width: unset;
+}
+

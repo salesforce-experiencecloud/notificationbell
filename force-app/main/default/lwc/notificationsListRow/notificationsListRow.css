@@ -1,0 +1,132 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+ 
+li {
+    list-style: none;
+    /* @sldsValidatorAllow */ border-top: solid var(--lwc-borderWidthThin, 1px) var(--lwc-colorBorderSeparatorAlt, var(--dxp-g-neutral, var(--lwc-colorBorderSeparatorAltFallback)));
+    height: 100%;
+}
+
+li:hover > a {
+    text-decoration: none;
+}
+
+.first-item {
+    border-top: none;
+}
+
+.notification-unread {
+    /* @sldsValidatorAllow */ background-color: var(--lwc-colorBackgroundNotificationNew, var(--dxp-c-unread-override, var(--dxp-g-root-1, var(--lwc-colorBackgroundNotificationNewFallback))));
+}
+
+.notification-unread:hover {
+    /* @sldsValidatorAllow */ background-color: var(--lwc-colorBackgroundRowHover, var(--dxp-c-unread-override, var(--dxp-g-root-1, var(--lwc-colorBackgroundRowHoverFallback))));
+}
+
+.notification-read {
+    /* @sldsValidatorAllow */ background-color: var(--lwc-colorBackgroundAlt, var(--dxp-g-root, var(--lwc-colorBackgroundAltFallback)));
+}
+
+.notification-read:hover {
+    /* @sldsValidatorAllow */ background-color: var(--lwc-colorBackgroundRowHover, var(--dxp-c-read-hover-override ,var(--dxp-g-root-1, var(--lwc-colorBackgroundRowHoverFallback)))) !important;
+}
+
+.notification-link {
+    display: block;
+    /* @sldsValidatorAllow */ padding: var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback)) var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback)) var(--lwc-spacingMedium, var(--lwc-spacingMediumFallback)) var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback));
+}
+
+.notification-avatar {
+    /* @sldsValidatorAllow */ margin-right: var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback));
+    float: left;
+}
+
+.notification-icon {
+    width: 30px;
+    height: 30px;
+    /* @sldsValidatorAllow */ border-radius: var(--lwc-borderRadiusMedium, var(--lwc-borderRadiusMediumFallback));
+}
+
+.notification-content {
+    overflow: hidden;
+}
+
+.notification-unread .notification-text-title {
+    color: var(--dxp-c-title-unread-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)));
+}
+.notification-unread .notification-text {
+    color: var(--dxp-c-body-unread-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)));
+}
+.notification-unread .notification-age {
+    color: var(--dxp-c-age-unread-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)));
+}
+
+.notification-read:hover .notification-text-title {
+    color: var(--dxp-c-title-hover-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault))) !important;
+}
+.notification-read:hover .notification-text {
+    color: var(--dxp-c-body-hover-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault))) !important;
+}
+.notification-read:hover .notification-age {
+    color: var(--dxp-c-age-hover-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault))) !important;
+}
+
+.notification-mark-read:hover {
+    color: var(--dxp-c-link-hover-color-override) !important;
+}
+
+.notification-text-title {
+    display: block;
+    /* @sldsValidatorAllow */ color: var(--lwc-colorTextDefault, var(--dxp-g-root-contrast, var(--lwc-colorTextDefaultFallback)));
+    font-family: var(--dxp-s-text-heading-medium-font-family, inherit);
+    font-style: var(--dxp-s-text-heading-medium-font-style, inherit);
+    /* @sldsValidatorAllow */ font-weight: var(--lwc-fontWeightBold, var(--dxp-s-text-heading-medium-font-weight, var(--lwc-fontWeightBoldFallback)));
+    text-decoration: var(--dxp-s-text-heading-medium-text-decoration, inherit);
+    /* @sldsValidatorAllow */ font-size: var(--lwc-fontSizeMediumFallback);
+}
+
+.notification-text {
+    display: block;
+    /* @sldsValidatorAllow */ color: var(--lwc-colorTextDefault, var(--dxp-g-root-contrast, var(--lwc-colorTextDefaultFallback)));
+    font-family: var(--dxp-s-text-heading-small-font-family, inherit);
+    /* @sldsValidatorAllow */ font-weight: var(--lwc-fontWeightRegular, var(--dxp-s-text-heading-small-font-weight, var(--lwc-fontWeightRegularFallback)));
+    font-style: var(--dxp-s-text-heading-small-font-style, inherit);
+    text-decoration: var(--dxp-s-text-heading-small-text-decoration, inherit);
+    /* @sldsValidatorAllow */ font-size: var(--lwc-fontSizeMediumFallback);
+    /* @sldsValidatorAllow */ margin: 0 0 var(--lwc-spacingMedium, var(--lwc-spacingMediumFallback)) 0;
+    word-wrap: break-word;
+    white-space: pre-line;
+}
+
+.notification-age {
+    /* @sldsValidatorAllow */ color: var(--lwc-colorTextWeak, var(--dxp-g-root-contrast, var(--lwc-colorTextWeakFallback)));
+    font-family: var(--dxp-s-text-heading-small-font-family, inherit);
+    /* @sldsValidatorAllow */ font-weight: var(--dxp-s-text-heading-small-font-weight, inherit);
+    font-style: var(--dxp-s-text-heading-small-font-style, inherit);
+    text-decoration: var(--dxp-s-text-heading-small-text-decoration, inherit);
+    /* @sldsValidatorAllow */ font-size: var(--lwc-fontSizeSmallFallback);
+}
+
+.notification-content-hidden {
+    display: none;
+}
+
+.assistive-unread-mark {
+    /* @sldsValidatorAllow */ color: var(--lwc-colorTextWeak, var(--lwc-colorTextWeakFallback));
+    /* @sldsValidatorAllow */ margin-left: var(--lwc-spacingXxSmall, var(--lwc-spacingXxSmallFallback));
+}
+
+/* @sldsValidatorAllow */ .assistiveText { /*ASK JASON ABOUT THIS. THIS WASN'T IN THE AURA LISTROW FILE*/
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+}

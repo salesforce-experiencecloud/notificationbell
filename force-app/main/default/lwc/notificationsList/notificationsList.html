@@ -1,0 +1,12 @@
+<template>
+    <ul role="menu" aria-label="Show More" onscroll={scrolled}>
+        <template for:each={_notifications} for:item="notification" for:index="index">
+            <c-notifications-list-row custom-styles={customStyles} index={index} key={notification.id} notification={notification} notification-mark-read-text={_notificationMarkReadText}
+            notification-mark-unread-text={_notificationMarkUnreadText} notification-image-hide={_notificationImageHide} notification-image-override={_notificationImageOverride}
+            notification-image-override-url={_notificationImageOverrideUrl}></c-notifications-list-row>
+        </template>
+    </ul>
+    <div class={moreNotificationsErrorClass}>
+        {labels.MORE_NOTIFICATIONS_ERROR}
+    </div>
+</template>

@@ -1,0 +1,19 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+ 
+lightning-accordion-section {
+    --slds-c-accordion-section-spacing-inline-start: 0;
+    --slds-c-accordion-section-spacing-inline-end: 0;
+    --sds-c-accordion-section-spacing-inline-start: 0;
+    --sds-c-accordion-section-spacing-inline-end: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.domainWarning {
+    background-color: yellow;
+}

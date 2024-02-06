@@ -1,0 +1,85 @@
+/*
+ * Copyright (c) 2020, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: BSD-3-Clause
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ */
+
+ 
+ div {
+    width: 100%;
+}
+
+.titleContainer {
+    height: 3rem;
+
+    background-color: var(--dxp-g-root, inherit);
+    /* @sldsValidatorAllow */ padding: var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback)) var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback)) var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback)) var(--lwc-spacingSmall, var(--lwc-spacingSmallFallback));
+    /* @sldsValidatorAllow */ border-bottom: solid 1px var(--lwc-colorBorderSeparatorAlt, var(--dxp-g-neutral-3, var(--lwc-colorBorderSeparatorAltFallback)));
+
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titleName {
+    min-width: 20%;
+
+    /* @sldsValidatorAllow */ font-weight: var(--lwc-fontWeightLight, var(--dxp-s-text-heading-large-font-weight, var(--lwc-fontWeightLightFallback)));
+    /* @sldsValidatorAllow */ font-size: var(--lwc-fontSizeLargeFallback);
+    font-style: var(--dxp-s-text-heading-large-font-style, inherit);
+    /* @sldsValidatorAllow */ color: var(--lwc-colorTextDefault, var(--dxp-g-root-contrast, var(--lwc-colorTextDefaultFallback)));
+    font-family: var(--dxp-s-text-heading-large-font-family, inherit);
+    text-transform: var(--dxp-s-text-heading-large-text-transform, inherit);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.titleOptions {
+    min-width: 40%;
+
+    /* @sldsValidatorAllow */ font-weight: var(--lwc-fontWeightRegular, var(--lwc-fontWeightRegularFallback));
+    font-size: var(--lwc-fontSizeSmallFallback);
+
+    display: inline-flex;
+    justify-content: flex-end;
+}
+
+.titleAction a {
+    min-width: 20%;
+    /* @sldsValidatorAllow */ padding: var(--lwc-spacingXSmall, var(--lwc-spacingXSmallFallback));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: var(--dxp-s-link-text-decoration, none);
+    font-style: var(--dxp-s-text-heading-large-font-style, inherit);
+    font-family: var(--dxp-s-text-heading-large-font-family, inherit);
+    /* @sldsValidatorAllow */ font-weight: var(--dxp-s-text-heading-large-font-weight, inherit);
+    /* @sldsValidatorAllow */ color: var(--lwc-colorTextLink, var(--dxp-s-link-text-color, var(--lwc-colorTextLinkFallback)));
+
+}
+
+svg.closeButton {
+    color: var(--dxp-s-link-text-color);
+}
+
+button:hover svg.closeButton {
+    color: var(--dxp-s-link-text-color-hover);
+}
+
+.titleAction a:focus {
+    outline: none;
+    text-decoration: var(--dxp-s-link-text-decoration-focus, underline);
+    color: var(--dxp-s-link-text-color-hover);
+}
+
+.titleAction a:hover {
+    outline: none;
+    text-decoration: var(--dxp-s-link-text-decoration-hover, underline);
+    color: var(--dxp-s-link-text-color-hover);
+}
+
+.trayMarkAllRead {
+    text-align: right;
+}
