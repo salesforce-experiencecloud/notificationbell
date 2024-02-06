@@ -613,7 +613,7 @@ export default class Notifications extends NavigationMixin(LightningElement) {
 
     handleOnBlur(event) {
         if (!event.relatedTarget || !event.target.contains(event.relatedTarget)) {
-            //this.isPanelVisible = false;
+            this.isPanelVisible = false;
         } else {
             /**
              * this handles the case where there are no notifications present and the user clicks inside the tray and
