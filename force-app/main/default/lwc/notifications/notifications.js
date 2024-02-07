@@ -617,7 +617,7 @@ export default class Notifications extends NavigationMixin(LightningElement) {
     }
 
     handleOnBlur(event) {
-        if (!event.relatedTarget || !event.target.contains(event.relatedTarget)) {
+        if ((!event.relatedTarget || !event.target.contains(event.relatedTarget)) && this.isInSitePreview === false) {
             this.isPanelVisible = false;
         } else {
             /**
