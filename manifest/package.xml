@@ -21,5 +21,10 @@
         <members>notificationsTitle</members>
         <name>LightningComponentBundle</name>
     </types>
+
+    <types>
+        <members>custom_notification</members>
+        <name>StaticResource</name>
+    </types>
     <version>59.0</version>
 </Package>

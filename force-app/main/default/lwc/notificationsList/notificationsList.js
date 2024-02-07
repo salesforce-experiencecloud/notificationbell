@@ -21,6 +21,7 @@ export default class NotificationsList extends LightningElement {
     _notificationImageHide;
     _notificationImageOverride;
     _notificationImageOverrideUrl;
+    _isInSitePreview = false;
 
  
 
@@ -96,6 +97,14 @@ export default class NotificationsList extends LightningElement {
             const currNotif = notifications[i];
             this._notifications[i] = {...currNotif};
         }
+    }
+
+    @api get isInSitePreview() {
+        return this._isInSitePreview;
+    }
+
+    set isInSitePreview(isInSitePreviewValue) {
+        this._isInSitePreview = isInSitePreviewValue;
     }
 
     @api get showerror() {

@@ -24,6 +24,7 @@ export default class NotificationsPanel extends LightningElement {
     _notificationImageHide;
     _notificationImageOverride;
     _notificationImageOverrideUrl;
+    _isInSitePreview = false;
 
     connectedCallback() {
         if (formFactorPropertyName === "Small") {
@@ -110,6 +111,14 @@ export default class NotificationsPanel extends LightningElement {
 
     set notificationImageOverrideUrl(notificationImageOverrideUrlValue) {
         this._notificationImageOverrideUrl = notificationImageOverrideUrlValue;
+    }
+
+    @api get isInSitePreview() {
+        return this._isInSitePreview;
+    }
+
+    set isInSitePreview(isInSitePreviewValue) {
+        this._isInSitePreview = isInSitePreviewValue;
     }
 
     @api get notifications() {

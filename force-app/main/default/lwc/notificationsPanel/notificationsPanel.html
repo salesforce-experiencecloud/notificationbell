@@ -7,7 +7,7 @@
                 <template if:true={hasNotifications}>
                     <c-notifications-list custom-styles={customStyles} notifications={_notifications} showerror={_showError} notification-mark-read-text={_notificationMarkReadText}
                     notification-mark-unread-text={_notificationMarkUnreadText} notification-image-hide={_notificationImageHide} notification-image-override={_notificationImageOverride}
-                    notification-image-override-url={_notificationImageOverrideUrl}></c-notifications-list>
+                    notification-image-override-url={_notificationImageOverrideUrl} is-in-site-preview={_isInSitePreview}></c-notifications-list>
                 </template>
                 <template if:false={hasNotifications}>
                     <span tabindex="0" class="unsNotificationsPanel noNotifications">{labels.NO_NOTIFICATIONS_MESSAGE}</span>

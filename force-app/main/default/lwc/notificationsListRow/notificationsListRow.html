@@ -8,7 +8,12 @@
                             <img src={_notificationImageOverrideUrl} alt="" class="notification-icon"/>
                         </template>
                         <template if:false={_notificationImageOverride}>
-                            <img src={_notification.image} alt="" class="notification-icon"/>
+                            <template if:false={isInSitePreview}>
+                                <img src={_notification.image} alt="" class="notification-icon"/>
+                            </template>
+                            <template if:true={isInSitePreview}>
+                                <img src={sitePreviewNotificationIcon} alt="" class="notification-icon"/>
+                            </template>
                         </template>
                     </div>
                 </template>

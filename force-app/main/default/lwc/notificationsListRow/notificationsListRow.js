@@ -7,6 +7,7 @@
 
 import {LightningElement, api} from "lwc";
 import LOCALE from '@salesforce/i18n/locale';
+import custom_notification_img from '@salesforce/resourceUrl/custom_notification';
 
 /* Labels */ /*
 import UNREAD_NOTIFICATION from "@salesforce/label/NotificationsClient.unreadNotification";
@@ -15,6 +16,7 @@ import DATE_IN_NETWORK_NAME_TEXT from "@salesforce/label/NotificationsClient.dat
 
 const UNREAD_NOTIFICATION = 'Unread Notifications';
 const DATE_IN_NETWORK_NAME_TEXT = 'Network Date';
+
 
 export default class NotificationsListRow extends LightningElement {
     /**
@@ -27,6 +29,7 @@ export default class NotificationsListRow extends LightningElement {
     _notificationImageHide;
     _notificationImageOverride;
     _notificationImageOverrideUrl;
+    _isInSitePreview = false;
 
     /**
      * Number of hours to show relative time for.
@@ -176,6 +179,19 @@ export default class NotificationsListRow extends LightningElement {
 
     set notificationImageOverrideUrl(notificationImageOverrideUrlValue) {
         this._notificationImageOverrideUrl = notificationImageOverrideUrlValue;
+    }
+
+    @api get sitePreviewNotificationIcon() {
+        return custom_notification_img;
+    }
+
+
+    @api get isInSitePreview() {
+        return this._isInSitePreview;
+    }
+
+    set isInSitePreview(isInSitePreviewValue) {
+        this._isInSitePreview = isInSitePreviewValue;
     }
 
     @api get notification() {
