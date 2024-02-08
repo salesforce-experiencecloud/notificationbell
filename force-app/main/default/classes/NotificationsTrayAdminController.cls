@@ -104,9 +104,12 @@ public with sharing class NotificationsTrayAdminController {
     public static string getDomainList(){
         
         Map<String,Object> resMap = new Map<String,Object>();
-        List<Domain> domList = [SELECT Id,Domain FROM Domain];
-        resMap.put('domList',domList);
-        resMap.put('orgDomainUrl', System.URL.getOrgDomainUrl().toExternalForm());
+        if(Domain.sObjectType.getDescribe().isAccessible() && Schema.sObjectType.Domain.fields.Domain.isAccessible())
+        {
+            List<Domain> domList = [SELECT Id,Domain FROM Domain LIMIT 1000];
+            resMap.put('domList',domList);
+            resMap.put('orgDomainUrl', System.URL.getOrgDomainUrl().toExternalForm());
+        }
         return System.JSON.serialize(resMap);
 
     }
@@ -115,8 +118,11 @@ public with sharing class NotificationsTrayAdminController {
     public static string getNotificationTypeList(){
         
         Map<String,Object> resMap = new Map<String,Object>();
-        List<CustomNotificationType> notificationTypeList = [SELECT Id,CustomNotifTypeName FROM CustomNotificationType];
-        resMap.put('notificationTypeList',notificationTypeList);
+        if(CustomNotificationType.sObjectType.getDescribe().isAccessible() && Schema.sObjectType.CustomNotificationType.fields.CustomNotifTypeName.isAccessible())
+        {
+            List<CustomNotificationType> notificationTypeList = [SELECT Id,CustomNotifTypeName FROM CustomNotificationType];
+            resMap.put('notificationTypeList',notificationTypeList);
+        }
         return System.JSON.serialize(resMap);
 
     }
