@@ -1,18 +1,8 @@
-# Salesforce DX Project: Next Steps
+# Notification Bell for Experience Cloud
+![Notification Bell for Experience Cloud Image ](https://github.com/salesforce-experiencecloud/barcodescanner/assets/8514282/266887ed-2a6a-49e7-a693-4bd01143e6fe)
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+## Description:
 
-## How Do You Plan to Deploy Your Changes?
+Primarily developed for the Lightning Web Runtime, the Notification Bell component for Experience Cloud grants builders a drag / drop Notification component that displays a user's notifications.	
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
-
-## Configure Your Salesforce DX Project
-
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+[Click here for More Info / Documentation](https://notificationbellforexpcloud.substack.com/)
