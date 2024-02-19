@@ -1,5 +1,5 @@
 # Notification Bell for Experience Cloud
-![Notification Bell for Experience Cloud Image ](https://github.com/salesforce-experiencecloud/barcodescanner/assets/8514282/266887ed-2a6a-49e7-a693-4bd01143e6fe)
+![Notification Bell for Experience Cloud Image ](https://github.com/salesforce-experiencecloud/notificationbell/assets/8514282/a525ecbf-e43f-43d2-8f5d-e1c8c764a9a5)
 
 ## Description:
 
