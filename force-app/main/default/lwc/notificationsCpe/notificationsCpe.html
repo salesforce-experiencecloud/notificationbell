@@ -188,6 +188,11 @@
                         <lightning-input type="color" label="Notification Unread Color" class="notificationUnreadColor slds-m-bottom_medium" value={notificationUnreadColor} 
                             onchange={handleNotificationUnreadColorChange} field-level-help="Set the unread notification color. Example: #FFFFFF"></lightning-input>
 
+                        <lightning-input type="number" label="Border Size (px)" min="0" max="10" step="1" class="trayBodyBorderSize slds-m-bottom_medium" value={trayBodyBorderSize} 
+                            onchange={handleTrayBodyBorderSizeChange} field-level-help="Set the size in pixels of the panel dropdown, between 0 and 10 pixels. Example: 2" required></lightning-input>
+
+                        <lightning-input type="color" label="Notification Panel Border Color" class="trayBodyBorderColor slds-m-bottom_medium" value={trayBodyBorderColor} 
+                            onchange={handleTrayBodyBorderColorChange} field-level-help="Set the notification panel border color. Example: #FFFFFF"></lightning-input>
 
                     </div>
                 </lightning-accordion-section>

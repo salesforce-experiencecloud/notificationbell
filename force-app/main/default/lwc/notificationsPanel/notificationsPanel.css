@@ -21,6 +21,20 @@
 
 div.notificationPanel.slds-dropdown {
     padding: 0;
-    border: none;
     min-width: unset;
+}
+
+
+@media only screen and (max-width: 767px) {
+    
+    :host {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    div.notificationPanel.slds-dropdown {
+        position: absolute;
+    }
+
 }

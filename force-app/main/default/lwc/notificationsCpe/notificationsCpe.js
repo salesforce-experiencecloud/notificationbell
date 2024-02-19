@@ -30,6 +30,8 @@ export default class NotificationsCpe extends LightningElement {
     @track trayBodyColor;
     @track notificationHoverColor;
     @track notificationUnreadColor;
+    @track trayBodyBorderSize = 1;
+    @track trayBodyBorderColor = '#CBCBCB';
 
     @track trayHeaderColor;
     @track notifLabelTextColor;
@@ -121,6 +123,7 @@ export default class NotificationsCpe extends LightningElement {
     notificationMarkReadTextDelayTimeout;
     notificationMarkUnreadTextDelayTimeout;
     notificationImageOverrideUrlDelayTimeout;
+    trayBodyBorderSizeDelayTimeout;
 
     get remoteSiteSetupUrl() {
         return this.orgDomainUrl + '/lightning/setup/SecurityRemoteProxy/page?address=%2F0rp%3FappLayout%3Dsetup%26lsi%3D-6%26setupid%3DSecurityRemoteProxy';
@@ -235,6 +238,12 @@ export default class NotificationsCpe extends LightningElement {
         this.trayBodyColor = valuetmp?.panelBody?.trayBodyColor;
         this.notificationHoverColor = valuetmp?.panelBody?.notificationHoverColor;
         this.notificationUnreadColor = valuetmp?.panelBody?.notificationUnreadColor;
+        
+        this.trayBodyBorderSize = valuetmp?.panelBody?.trayBodyBorderSize;
+        this.trayBodyBorderSize = (this.trayBodyBorderSize !== undefined && this.trayBodyBorderSize !== null) ? this.trayBodyBorderSize : 1 ;
+        
+        this.trayBodyBorderColor = valuetmp?.panelBody?.trayBodyBorderColor;
+        this.trayBodyBorderColor = (this.trayBodyBorderColor !== undefined && this.trayBodyBorderColor !== null && this.trayBodyBorderColor.trim() !== '') ? this.trayBodyBorderColor : '#CBCBCB' ;
 
 
         this.trayHeaderColor = valuetmp?.panelHeader?.trayHeaderColor;
@@ -347,16 +356,24 @@ export default class NotificationsCpe extends LightningElement {
     validateValues() {
 
         this.displayInputError('.bellIconSize', '');
+        this.displayInputError('.trayBodyBorderSize', '');
         this.displayInputError('.domain','');
         this.displayInputError('.notificationImageOverrideUrl','');
 
-        let isBellIconSizeValid = true, isDomainValid = true, isNotificationImageOverrideUrlValid = true;
-        let isBellIconSizeError = '', isDomainError = '', isNotificationImageOverrideUrlError = '';
+        let isBellIconSizeValid = true, isDomainValid = true, isNotificationImageOverrideUrlValid = true, isTrayBodyBorderSizeValid = true;
+        let isBellIconSizeError = '', isDomainError = '', isNotificationImageOverrideUrlError = '', isTrayBodyBorderSizeError = '';
         try {
             this.bellIconSize = parseInt(this.bellIconSize);
         } catch(e) {
             isBellIconSizeValid = false;
             isBellIconSizeError = 'Please enter a valid number.';
+        }
+
+        try {
+            this.trayBodyBorderSize = parseInt(this.trayBodyBorderSize);
+        } catch(e) {
+            isTrayBodyBorderSizeValid = false;
+            isTrayBodyBorderSizeError = 'Please enter a valid number.';
         }
 
         if(this.domainSelected === undefined || this.domainSelected === null || this.domainSelected.trim() === '' || this.domainSelected.trim() === 'none')
@@ -371,7 +388,7 @@ export default class NotificationsCpe extends LightningElement {
             isNotificationImageOverrideUrlError = 'Please enter a notification image url.';
         }
        
-        if(isBellIconSizeValid === true && isDomainValid === true && isNotificationImageOverrideUrlValid === true)
+        if(isBellIconSizeValid === true && isDomainValid === true && isNotificationImageOverrideUrlValid === true && isTrayBodyBorderSizeValid === true)
         {
             this.buildAndPublishValue(); 
         }
@@ -381,6 +398,11 @@ export default class NotificationsCpe extends LightningElement {
             if(isBellIconSizeValid === false)
             {
                 this.displayInputError('.bellIconSize', isBellIconSizeError);
+            }
+
+            if(isTrayBodyBorderSizeValid === false)
+            {
+                this.displayInputError('.trayBodyBorderSize', isTrayBodyBorderSizeError);
             }
 
             if(isDomainValid === false)
@@ -438,6 +460,8 @@ export default class NotificationsCpe extends LightningElement {
         tmpvalue.panelBody.trayBodyColor = this.trayBodyColor;
         tmpvalue.panelBody.notificationHoverColor = this.notificationHoverColor;
         tmpvalue.panelBody.notificationUnreadColor = this.notificationUnreadColor;
+        tmpvalue.panelBody.trayBodyBorderSize = this.trayBodyBorderSize;
+        tmpvalue.panelBody.trayBodyBorderColor = this.trayBodyBorderColor;
 
         tmpvalue.panelHeader = {};
         tmpvalue.panelHeader.trayHeaderColor = this.trayHeaderColor;
@@ -539,11 +563,11 @@ export default class NotificationsCpe extends LightningElement {
         this.validateValues();
     }
 
-    handleBellIconSizeChange(e) {
+    /*handleBellIconSizeChange(e) {
         
         this.bellIconSize = e.detail.value;
         this.validateValues();
-    }
+    }*/
 
     handleBodyDropdownAlignmentChange(e) {
         this.bodyDropdownAlignmentSelected = e.detail.value;
@@ -553,6 +577,21 @@ export default class NotificationsCpe extends LightningElement {
     handleTrayBodyColorChange(e) {
         
         this.trayBodyColor = e.detail.value;
+        this.validateValues();
+    }
+
+    handleTrayBodyBorderSizeChange(e) {
+        window.clearTimeout(this.trayBodyBorderSizeDelayTimeout);
+        // eslint-disable-next-line @lwc/lwc/no-async-operation
+        this.trayBodyBorderSizeDelayTimeout = setTimeout(() => {
+            this.trayBodyBorderSize =  e.detail.value;
+            this.validateValues();
+        }, typeDelay);
+    }
+
+    handleTrayBodyBorderColorChange(e) {
+        
+        this.trayBodyBorderColor = e.detail.value;
         this.validateValues();
     }
 

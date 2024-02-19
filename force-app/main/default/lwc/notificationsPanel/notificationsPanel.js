@@ -38,6 +38,33 @@ export default class NotificationsPanel extends LightningElement {
         const panel = this.template.querySelector(".notificationPanel");
         if (panel) {
             panel.style.width = this._panelWidth;
+            let tmpborderString = (this._customStyles?.trayBodyBorderSize !== undefined && this._customStyles?.trayBodyBorderSize !== null) ? this._customStyles?.trayBodyBorderSize + '' : '1';
+            tmpborderString += 'px solid ';
+            tmpborderString += (this._customStyles?.trayBodyBorderColor !== undefined && this._customStyles?.trayBodyBorderColor !== null && this._customStyles?.trayBodyBorderColor.trim() !== '') ? this._customStyles?.trayBodyBorderColor : '#cbcbcb';
+            panel.style.border = tmpborderString;
+            
+
+            if(formFactorPropertyName === "Small")
+            {
+                if(this._customStyles?.iconAlignment === 'right')
+                {
+                    panel.style.left = 'auto';
+                    panel.style.right = '0';
+                    panel.style.transform = 'translateY(0%) translateX(0)';
+                }
+                else if(this._customStyles?.iconAlignment === 'center')
+                {
+                    panel.style.left = 'auto';
+                    panel.style.right = 'auto';
+                    panel.style.transform = 'translateY(0%) translateX(0%)';
+                }
+                else if(this._customStyles?.iconAlignment === 'left')
+                {
+                    panel.style.left = '0';
+                    panel.style.right = 'auto';
+                    panel.style.transform = 'translateY(0%) translateX(0)';
+                }
+            }
         }
     }
 
@@ -141,6 +168,8 @@ export default class NotificationsPanel extends LightningElement {
                 return "slds-dropdown slds-dropdown_large notificationPanel";
             } else if (this._customStyles.bodyDropdownAlign === "left") {
                 return "slds-dropdown slds-dropdown_large notificationPanel slds-dropdown_right";
+            } else if (this._customStyles.bodyDropdownAlign === "right") {
+                return "slds-dropdown slds-dropdown_large notificationPanel slds-dropdown_left";
             }
         }
         return "slds-dropdown slds-dropdown_large notificationPanel slds-dropdown_right";
