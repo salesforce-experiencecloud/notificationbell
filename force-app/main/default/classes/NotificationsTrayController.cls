@@ -257,7 +257,12 @@ public with sharing class NotificationsTrayController {
 
         domainPath = (domainPath.endsWith('/s')) ? domainPath.left(domainPath.length() - 2) : domainPath;
         
-        domainPath = domainPath.replace(domainPathPrefix, '');
+        //domainPath = domainPath.replace(domainPathPrefix, '');
+        
+        if (domainPath.endsWith(domainPathPrefix)) {
+            Integer endIndex = domainPath.length() - domainPathPrefix.length();
+            domainPath = domainPath.substring(0, endIndex);
+        }
 
         String endpoint = domainPath + '/services/data/v56.0/connect/notifications';
 
