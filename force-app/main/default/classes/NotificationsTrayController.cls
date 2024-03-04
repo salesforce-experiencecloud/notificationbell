@@ -252,21 +252,13 @@ public with sharing class NotificationsTrayController {
         webReq.setMethod(methodType);
         webReq.setHeader('Authorization','Bearer ' + UserInfo.getSessionId());
         
-        String domainPath = System.Site.getBaseSecureUrl();
-        String domainPathPrefix = System.Site.getPathPrefix();
-
+        String domainPath = Url.getOrgDomainUrl().toExternalForm();
+        
         domainPath = (domainPath.endsWith('/s')) ? domainPath.left(domainPath.length() - 2) : domainPath;
-        
-        //domainPath = domainPath.replace(domainPathPrefix, '');
-        
-        if (domainPath.endsWith(domainPathPrefix)) {
-            Integer endIndex = domainPath.length() - domainPathPrefix.length();
-            domainPath = domainPath.substring(0, endIndex);
-        }
+
 
         String endpoint = domainPath + '/services/data/v56.0/connect/notifications';
-
-        // replace endpoint url
+        
         webReq.setEndpoint(endpoint);
        return webReq;
     }
