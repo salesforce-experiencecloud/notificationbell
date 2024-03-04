@@ -9,12 +9,7 @@
                     </a>
                 </span>
             </template>
-            <button onclick={closePanel} class="slds-button slds-button_icon slds-m-left_small slds-p-around_small">
-                <svg class="slds-button__icon slds-icon_xx-small closeButton" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">{labels.CLOSE_PANEL}</span>
-            </button>
+            <lightning-button-icon icon-name="utility:close" onclick={closePanel} alternative-text={labels.CLOSE_PANEL} class="slds-m-left_small"></lightning-button-icon>
         </span>
     </div>
 </template>
