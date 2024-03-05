@@ -2,4 +2,7 @@
     <apiVersion>56.0</apiVersion>
     <isExposed>false</isExposed>
     <masterLabel>Store</masterLabel>
+    <capabilities>
+        <capability>lightningCommunity__RelaxedCSP</capability>
+    </capabilities>
 </LightningComponentBundle>

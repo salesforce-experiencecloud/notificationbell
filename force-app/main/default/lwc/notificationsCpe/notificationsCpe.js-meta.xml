@@ -3,6 +3,9 @@
     <apiVersion>59.0</apiVersion>
     <isExposed>true</isExposed>
     <masterLabel>Notifications Property Editor</masterLabel>
+    <capabilities>
+      <capability>lightningCommunity__RelaxedCSP</capability>
+    </capabilities>
    <targets>
      <target>lightning__PropertyEditor</target>
    </targets>
