@@ -6,10 +6,7 @@
  */
 
 import { LightningElement, track, api, wire } from 'lwc';
-import getDomainList from '@salesforce/apex/NotificationsTrayAdminController.getDomainList';
 import getNotificationTypeList from '@salesforce/apex/NotificationsTrayAdminController.getNotificationTypeList';
-import checkDomain from '@salesforce/apex/NotificationsTrayAdminController.checkDomain';
-import createRemoteSite from '@salesforce/apex/NotificationsTrayAdminController.createRemoteSite';
 ``
 const typeDelay = 500;
 
@@ -59,10 +56,6 @@ export default class NotificationsCpe extends LightningElement {
     @track notificationImageOverrideUrl = '/img/notificationsEmail/custom_notification.png';
 
     @track showModal = false;
-    @track domainOptions = [{label: 'None', value: 'none'}];
-    @track domainSelected = 'none';
-    @track hideAddDomainButton = true;
-    @track orgDomainUrl = '';
 
     @track customNotificationTypeOptions = [];
     @track customNotificationTypeSelected = [];
@@ -72,31 +65,6 @@ export default class NotificationsCpe extends LightningElement {
     @track notificationMarkReadText = 'Mark Read';
     @track notificationMarkUnreadText = 'Mark Unread';
     
-
-    @wire(getDomainList)
-    getDomainListWire({error, data}) {
-    
-        if (error) {
-            
-        } else if (data) {
-            
-            let response = JSON.parse(data);
-            if(response && response.orgDomainUrl !== undefined && response.orgDomainUrl !== null && response.orgDomainUrl.trim() !== '')
-            {
-                this.orgDomainUrl = response.orgDomainUrl;
-            }
-
-            if(response && response.domList !== undefined && response.domList !== null && response.domList.length > 0)
-            {
-                this.domainOptions = [{label: 'None', value: 'none'}];
-                for(let i=0;i<response.domList.length;i++)
-                {
-                    this.domainOptions.push({label: response.domList[i].Domain, value: response.domList[i].Domain});
-                }
-            }
-        }
-        
-    }
 
     @wire(getNotificationTypeList)
     getNotificationTypeListWire({error, data}) {
@@ -125,9 +93,6 @@ export default class NotificationsCpe extends LightningElement {
     notificationImageOverrideUrlDelayTimeout;
     trayBodyBorderSizeDelayTimeout;
 
-    get remoteSiteSetupUrl() {
-        return this.orgDomainUrl + '/lightning/setup/SecurityRemoteProxy/page?address=%2F0rp%3FappLayout%3Dsetup%26lsi%3D-6%26setupid%3DSecurityRemoteProxy';
-    }
 
     get bellIconAlignmentOptions() {
         return [
@@ -162,14 +127,14 @@ export default class NotificationsCpe extends LightningElement {
         return '/assets/icons/utility-sprite/svg/symbols.svg#close';
     }
 
-    @api
+    @api //deprecated
     get showDomainSuccessMsg() {
-        return this.hideAddDomainButton === true && this.domainSelected !== undefined && this.domainSelected !== null && this.domainSelected.trim() !== '' && this.domainSelected.trim() !== 'none';
+        return false; 
     }
 
-    @api
+    @api //deprecated
     get showDomainWarningMsg() {
-        return this.domainSelected === undefined || this.domainSelected === null || this.domainSelected.trim() === '' || this.domainSelected.trim() === 'none';
+        return false;
     }
 
     @api
@@ -182,20 +147,6 @@ export default class NotificationsCpe extends LightningElement {
         let valuetmp = JSON.parse(value);
         let isValueUndefined = this._value === undefined;
         this._value = {};
-
-        this.domainSelected =  valuetmp?.domainConfig?.domain;
-        this.domainSelected = (this.domainSelected !== undefined && this.domainSelected !== null && this.domainSelected.trim() !== '') ? this.domainSelected : 'none' ;
-
-
-        let domainSelectedEl = this.template.querySelector('.domain');
-        if(domainSelectedEl !== undefined && domainSelectedEl !== null) 
-        {
-            domainSelectedEl.value = this.domainSelected;
-            if(isValueUndefined)
-            {
-                this.checkSelectedDomainInRemoteSites();
-            }
-        }
 
         this.customNotificationTypeSelected =  valuetmp?.generalNotificationConfig?.customNotificationType?.split(',');
         this.customNotificationTypeSelected = (this.customNotificationTypeSelected !== undefined && this.customNotificationTypeSelected !== null && this.customNotificationTypeSelected.length > 0) ? this.customNotificationTypeSelected : [] ;
@@ -357,11 +308,10 @@ export default class NotificationsCpe extends LightningElement {
 
         this.displayInputError('.bellIconSize', '');
         this.displayInputError('.trayBodyBorderSize', '');
-        this.displayInputError('.domain','');
         this.displayInputError('.notificationImageOverrideUrl','');
 
-        let isBellIconSizeValid = true, isDomainValid = true, isNotificationImageOverrideUrlValid = true, isTrayBodyBorderSizeValid = true;
-        let isBellIconSizeError = '', isDomainError = '', isNotificationImageOverrideUrlError = '', isTrayBodyBorderSizeError = '';
+        let isBellIconSizeValid = true, isNotificationImageOverrideUrlValid = true, isTrayBodyBorderSizeValid = true;
+        let isBellIconSizeError = '', isNotificationImageOverrideUrlError = '', isTrayBodyBorderSizeError = '';
         try {
             this.bellIconSize = parseInt(this.bellIconSize);
         } catch(e) {
@@ -376,11 +326,6 @@ export default class NotificationsCpe extends LightningElement {
             isTrayBodyBorderSizeError = 'Please enter a valid number.';
         }
 
-        if(this.domainSelected === undefined || this.domainSelected === null || this.domainSelected.trim() === '' || this.domainSelected.trim() === 'none')
-        {
-            isDomainValid = false;
-            isDomainError = 'Please select your site\'s domain.';
-        }
 
         if(this.notificationImageOverride === true && (this.notificationImageOverrideUrl === undefined || this.notificationImageOverrideUrl === null || this.notificationImageOverrideUrl.trim() === '') )
         {
@@ -388,7 +333,7 @@ export default class NotificationsCpe extends LightningElement {
             isNotificationImageOverrideUrlError = 'Please enter a notification image url.';
         }
        
-        if(isBellIconSizeValid === true && isDomainValid === true && isNotificationImageOverrideUrlValid === true && isTrayBodyBorderSizeValid === true)
+        if(isBellIconSizeValid === true && isNotificationImageOverrideUrlValid === true && isTrayBodyBorderSizeValid === true)
         {
             this.buildAndPublishValue(); 
         }
@@ -403,11 +348,6 @@ export default class NotificationsCpe extends LightningElement {
             if(isTrayBodyBorderSizeValid === false)
             {
                 this.displayInputError('.trayBodyBorderSize', isTrayBodyBorderSizeError);
-            }
-
-            if(isDomainValid === false)
-            {
-                this.displayInputError('.domain', isDomainError);
             }
 
             if(isNotificationImageOverrideUrlValid === false)
@@ -436,9 +376,6 @@ export default class NotificationsCpe extends LightningElement {
     buildAndPublishValue()
     {
         let tmpvalue = {};
-        //domainConfig
-        tmpvalue.domainConfig = {};
-        tmpvalue.domainConfig.domain = this.domainSelected;
 
         //generalNotificationConfig
         tmpvalue.generalNotificationConfig = {};
@@ -724,54 +661,6 @@ export default class NotificationsCpe extends LightningElement {
         this.validateValues();
     }
 
-    handleDomainChange(e) { 
-        this.displayInputError('.domain', '');
-        this.domainSelected = e.detail.value;
-        this.validateValues();
-        this.checkSelectedDomainInRemoteSites();
-
-    }
-
-    async checkSelectedDomainInRemoteSites() {
-        if(this.domainSelected !== undefined && this.domainSelected !== null && this.domainSelected.trim() !== '' && this.domainSelected.trim() !== 'none')
-        {
-            let domainCheckResultJSON = await checkDomain({domain: this.domainSelected});
-            let domainCheckResult = JSON.parse(domainCheckResultJSON);
-            if(domainCheckResult && domainCheckResult.isInRemoteSites !== undefined && domainCheckResult.isInRemoteSites === false)
-            {
-                this.displayInputError('.domain', 'This domain is not in your remote site settings. Please press the button below to add it to your remote site settings. Note: This action will modify your org\'s Metadata.');
-                this.hideAddDomainButton = false;
-            }
-            else if(domainCheckResult && domainCheckResult.error)
-            {
-                this.displayInputError('.domain', domainCheckResult.error);
-            }
-            else if(domainCheckResult && domainCheckResult.isInRemoteSites !== undefined && domainCheckResult.isInRemoteSites === true)
-            {
-                this.hideAddDomainButton = true;
-            }
-        }
-    }
-
-    async handleAddToRemoteSites(e) {
-        this.displayInputError('.domain', '');
-        if(this.domainSelected !== undefined && this.domainSelected !== null && this.domainSelected.trim() !== '' && this.domainSelected.trim() !== 'none' && this.hideAddDomainButton === false)
-        {
-            this.hideAddDomainButton = true;
-            let createRemoteSiteResultJSON = await createRemoteSite({domain: this.domainSelected});
-            let createRemoteSiteResult = JSON.parse(createRemoteSiteResultJSON);
-            if(createRemoteSiteResult && createRemoteSiteResult.success !== undefined && createRemoteSiteResult.success === true)
-            {
-
-            }
-            else if(createRemoteSiteResult && createRemoteSiteResult.error)
-            {
-                this.hideAddDomainButton = false;
-                this.displayInputError('.domain', createRemoteSiteResult.error);
-            }
-        }
-
-    }
 
     handleCustomNotificationTypeChange(e) { 
         this.customNotificationTypeSelected = e.detail.value;

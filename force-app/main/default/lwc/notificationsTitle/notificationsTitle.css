@@ -38,13 +38,19 @@
 }
 
 .titleOptions {
-    min-width: 40%;
+    min-width: 50%;
 
     /* @sldsValidatorAllow */ font-weight: var(--lwc-fontWeightRegular, var(--lwc-fontWeightRegularFallback));
     font-size: var(--lwc-fontSizeSmallFallback);
 
     display: inline-flex;
     justify-content: flex-end;
+}
+
+.titleAction {
+    height: 48px;
+    position: relative;
+    width: 100%;
 }
 
 .titleAction a {
@@ -57,14 +63,36 @@
     font-family: var(--dxp-s-text-heading-large-font-family, inherit);
     /* @sldsValidatorAllow */ font-weight: var(--dxp-s-text-heading-large-font-weight, inherit);
     /* @sldsValidatorAllow */ color: var(--lwc-colorTextLink, var(--dxp-s-link-text-color, var(--lwc-colorTextLinkFallback)));
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 100%;
 
 }
 
-svg.closeButton {
+button.closeButton {
+    position: relative;
+    width: 48px;
+    height: 48px;
+}
+
+button.closeButton svg.closeButton,
+button.closeButton > div.closeButton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     color: var(--dxp-s-link-text-color);
+    font-size: 30px;
+    font-family: sans-serif;
+    font-weight: 100;
+    transform: translate(-50%, -50%);
+    height: 48px;
+    width: 48px;
 }
 
-button:hover svg.closeButton {
+button.closeButton:hover svg.closeButton,
+button.closeButton:hover > div.closeButton {
     color: var(--dxp-s-link-text-color-hover);
 }
 

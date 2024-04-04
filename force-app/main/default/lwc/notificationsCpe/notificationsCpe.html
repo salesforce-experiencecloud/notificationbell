@@ -1,41 +1,6 @@
 <template>
     <lightning-tabset>
         <lightning-tab label="General">
-            
-            <lightning-accordion allow-multiple-sections-open
-            active-section-name=remoteSiteConfig>
-                <lightning-accordion-section name="remoteSiteConfig" label="Remote Site Config">
-                    <div class="slds-p-left_small slds-p-top_medium">
-                        
-                        <div class="slds-text-body_small slds-m-bottom_large">
-                            This configuration will query / modify the Remote Site Settings metadata in your org. 
-                            You can also configure this from <a href={remoteSiteSetupUrl} target="_blank">Salesforce Setup > Security > Remote Site Settings</a>
-                            This component will not work if your site domain is not added to remote site settings.
-                        </div>
-
-                        <div class="slds-m-bottom_medium">
-                            <lightning-select
-                            name="domain"
-                            label="Select Your Site's Domain"
-                            value={domainSelected}
-                            options={domainOptions}
-                            onchange={handleDomainChange}
-                            required class="domain"></lightning-select>
-                        </div>
-
-                        <template if:true={showDomainSuccessMsg}>
-                            <div class="slds-text-body_small slds-text-color_success slds-m-bottom_medium">Your domain is properly configured in Remote Site Settings.</div>
-                        </template>
-                        <template if:true={showDomainWarningMsg}>
-                            <div class="slds-text-body_small domainWarning slds-m-bottom_medium slds-p-around_xx-small">Please select your site's domain.</div>
-                        </template>
-
-                        <button class="slds-button slds-button_brand" disabled={hideAddDomainButton} onclick={handleAddToRemoteSites}>Add to Remote Sites</button>
-
-
-                    </div>
-                </lightning-accordion-section>
-            </lightning-accordion>
 
 
             <lightning-accordion allow-multiple-sections-open

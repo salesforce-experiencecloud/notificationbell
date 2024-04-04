@@ -3,18 +3,21 @@
         <h2 class="titleName">{notificationHeaderText}</h2>
         <span class="titleOptions">
             <template if:true={hasNotifications}>
-                <span class="titleAction trayMarkAllRead slds-p-top_small">
+                <span class="titleAction trayMarkAllRead slds-p-top_xx-small">
                     <a href="javascript:void(0);" onclick={onMarkAllAsReadClick}>
                         {notificationHeaderMarkAllRead}
                     </a>
                 </span>
             </template>
-            <button onclick={closePanel} class="slds-button slds-button_icon slds-m-left_small slds-p-around_small">
-                <svg class="slds-button__icon slds-icon_xx-small closeButton" aria-hidden="true">
-                    <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                </svg>
-                <span class="slds-assistive-text">{labels.CLOSE_PANEL}</span>
-            </button>
+            
+                <button 
+                    class="slds-button slds-button_icon slds-m-left_small slds-p-around_small closeButton" 
+                    title={labels.CLOSE_PANEL} 
+                    onclick={closePanel}>
+                        <div aria-hidden="true" tabindex="-1" class="slds-button__icon slds-p-top_xx-small closeButton">&times;</div>
+                        <span class="slds-assistive-text">{labels.CLOSE_PANEL}</span>
+                </button>
+            
         </span>
     </div>
 </template>

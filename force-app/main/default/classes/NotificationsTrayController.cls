@@ -47,9 +47,13 @@ public with sharing class NotificationsTrayController {
         }
         catch(Exception e) {
             resObject.put('error', e + '');
+            System.debug('error: ' + e);
             //resObject.put('response', response);
+            System.debug('response: ' + response);
             //resObject.put('siteId', System.Site.getSiteId());
+            System.debug('siteId: ' + System.Site.getSiteId());
             //resObject.put('baseUrl', System.Site.getBaseUrl());
+            System.debug('baseSecureUrl: ' + System.Site.getBaseSecureUrl());
             //resObject.put('baseSecureUrl',System.Site.getBaseSecureUrl());
         }
 
@@ -94,9 +98,13 @@ public with sharing class NotificationsTrayController {
             }
             catch(Exception e) {
                 resObject.put('error', e + '');
+                System.debug('error: ' + e);
                 //resObject.put('response', response);
+                System.debug('response: ' + response);
                 //resObject.put('siteId', System.Site.getSiteId());
+                System.debug('siteId: ' + System.Site.getSiteId());
                 //resObject.put('baseUrl', System.Site.getBaseUrl());
+                System.debug('baseSecureUrl: ' + System.Site.getBaseSecureUrl());
                 //resObject.put('baseSecureUrl',System.Site.getBaseSecureUrl());
             }
         }
@@ -252,19 +260,29 @@ public with sharing class NotificationsTrayController {
         webReq.setMethod(methodType);
         webReq.setHeader('Authorization','Bearer ' + UserInfo.getSessionId());
         
-        String domainPath = System.Site.getBaseSecureUrl();
-        String domainPathPrefix = System.Site.getPathPrefix();
-
-        domainPath = (domainPath.endsWith('/s')) ? domainPath.left(domainPath.length() - 2) : domainPath;
-        
-        domainPath = domainPath.replace(domainPathPrefix, '');
+        //String domainPath = getSiteDomain();
+        String domainPath = System.Url.getOrgDomainUrl().toExternalForm();
 
         String endpoint = domainPath + '/services/data/v56.0/connect/notifications';
-
+       
         // replace endpoint url
         webReq.setEndpoint(endpoint);
        return webReq;
     }
 
+    /* not needed since callout now uses internal my domain (only approach that works in all tested scenarios)
+    private static String getSiteDomain() {
+
+        String domainPath = System.Site.getBaseSecureUrl();
+        //String domainPath = Url.getOrgDomainUrl().toExternalForm();
+        String domainPathPrefix = System.Site.getPathPrefix();
+
+        domainPath = domainPath.substringBeforeLast('/s');
+        
+        domainPath = domainPath.substringBeforeLast(domainPathPrefix);
+
+        return domainPath;
+    }
+    */
 
 }

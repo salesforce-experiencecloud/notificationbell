@@ -82,59 +82,6 @@ export default class NotificationsListRow extends LightningElement {
             this.handleMarkReadCustomStyles(customStyles);
         }
 
-        const titleAction = this.template.querySelector(".titleAction a");
-            if (titleAction) {
-                
-                if (customStyles.markAllReadLabelTextStyle) {
-                    switch (customStyles.markAllReadLabelTextStyle) {
-                        case "none":
-                            titleAction.style.fontFamily = "inherit";
-                            titleAction.style.fontStyle = "inherit";
-                            titleAction.style.fontWeight = "inherit";
-                            titleAction.style.textDecoration = "inherit";
-                            break;
-                        case "Heading1":
-                            titleAction.style.fontFamily = "var(--dxp-s-text-heading-extra-large-font-family)";
-                            titleAction.style.fontStyle = "var(--dxp-s-text-heading-extra-large-font-style)";
-                            titleAction.style.fontWeight = "var(--dxp-s-text-heading-extra-large-font-weight)";
-                            titleAction.style.fontSize = "var(--dxp-s-text-heading-extra-large-font-size)";
-                            break;
-                        case "Heading2":
-                            titleAction.style.fontFamily = "var(--dxp-s-text-heading-large-font-family)";
-                            titleAction.style.fontStyle = "var(--dxp-s-text-heading-large-font-style)";
-                            titleAction.style.fontWeight = "var(--dxp-s-text-heading-large-font-weight)";
-                            titleAction.style.fontSize = "var(--dxp-s-text-heading-large-font-size)";
-                            break;
-                        case "Heading3":
-                            titleAction.style.fontFamily = "var(--dxp-s-text-heading-medium-font-family)";
-                            titleAction.style.fontStyle = "var(--dxp-s-text-heading-medium-font-style)";
-                            titleAction.style.fontWeight = "var(--dxp-s-text-heading-medium-font-weight)";
-                            titleAction.style.fontSize = "var(--dxp-s-text-heading-medium-font-size)";
-                            break;
-                        case "Heading4":
-                            titleAction.style.fontFamily = "var(--dxp-s-text-heading-small-font-family)";
-                            titleAction.style.fontStyle = "var(--dxp-s-text-heading-small-font-style)";
-                            titleAction.style.fontWeight = "var(--dxp-s-text-heading-small-font-weight)";
-                            titleAction.style.fontSize = "var(--dxp-s-text-heading-small-font-size)";
-                            break;
-                        case "Paragraph1":
-                            titleAction.style.fontFamily = "var(--dxp-s-body-font-family)";
-                            titleAction.style.fontStyle = "var(--dxp-s-body-font-style)";
-                            titleAction.style.fontWeight = "var(--dxp-s-body-font-weight)";
-                            titleAction.style.fontSize = "var(--dxp-s-text-body-font-size)";
-                            break;
-                        case "Paragraph2":
-                            titleAction.style.fontFamily = "var(--dxp-s-body-small-font-family)";
-                            titleAction.style.fontStyle = "var(--dxp-s-body-small-font-style)";
-                            titleAction.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
-                            titleAction.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
-                            break;
-                        default:
-                            // do nothing
-                    }
-                }
-            }
-
     }
 
     connectedCallback() {
@@ -580,7 +527,7 @@ export default class NotificationsListRow extends LightningElement {
 
 
     handleMarkReadCustomStyles(customStyles) {
-        const notificationMarkRead = this.template.querySelector(".notification-mark-read");
+        const notificationMarkRead = this.template.querySelector("a.notification-mark-read");
         if (notificationMarkRead) {
             if (customStyles.notificationMarkReadColor) {
                 notificationMarkRead.style.color = customStyles.notificationMarkReadColor;

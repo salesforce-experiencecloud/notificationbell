@@ -14,6 +14,7 @@ const CLOSE_PANEL = 'Close Panel';
 
 
 export default class NotificationsTitle extends LightningElement {
+
     _notifications = [];
     _customStyles;
     _notificationHeaderText;
@@ -88,7 +89,7 @@ export default class NotificationsTitle extends LightningElement {
                     }
                 }
             }
-            const titleAction = this.template.querySelector(".titleAction a");
+            const titleAction = this.template.querySelector("span.titleAction > a");
             if (titleAction) {
                 if (customStyles.markAllReadTextColor) {
                     titleAction.style.color = customStyles.markAllReadTextColor;
