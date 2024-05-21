@@ -100,7 +100,7 @@
                             required class="bellIconAlignment"></lightning-select>
                         </div>
 
-                        <lightning-input type="number" label="Size (px)" min="18" max="30" step="1" class="bellIconSize slds-m-bottom_medium" value={bellIconSize} 
+                        <lightning-input type="number" label="Size (px)" class="bellIconSize slds-m-bottom_medium" value={bellIconSize} 
                             onchange={handleBellIconSizeChange} field-level-help="Set the size in pixels of the bell icon, between 18 and 30 pixels. Example: 24" required></lightning-input>
 
                         <lightning-input type="color" label="Counter Color" class="bellIconCounterColor slds-m-bottom_medium" value={bellIconCounterColor} 
@@ -214,84 +214,140 @@
                 <lightning-accordion-section name="notificationConfig" label="Notification">
                     <div class="slds-p-left_small slds-p-top_medium">
 
-                        <lightning-input type="color" label="Notification Title Color" class="notificationTitleColor slds-m-bottom_medium" value={notificationTitleColor} 
-                            onchange={handleNotificationTitleColorChange} field-level-help="Set the notification title color. Example: #EA001E"></lightning-input>
-
-                        <lightning-input type="color" label="Notification Title Hover Color" class="notificationTitleHoverColor slds-m-bottom_medium" value={notificationTitleHoverColor} 
-                            onchange={handleNotificationTitleHoverColorChange} field-level-help="Set the notification title hover color. Example: #EA001E"></lightning-input>
-
-                        <lightning-input type="color" label="Unread Notification Title Color" class="notificationTitleUnreadColor slds-m-bottom_medium" value={notificationTitleUnreadColor} 
-                            onchange={handleNotificationTitleUnreadColorChange} field-level-help="Set the unread notification title color. Example: #EA001E"></lightning-input>
-
-                        <div class="slds-m-bottom_medium">
-                            <lightning-select
-                            name="notificationTitleTextStyle"
-                            label="Notification Title Text Style"
-                            value={notificationTitleTextStyleSelected}
-                            options={textStyleOptions}
-                            onchange={handleNotificationTitleTextStyleChange}
-                            required class="notificationTitleTextStyle"></lightning-select>
-                        </div>
-
-
-                        <lightning-input type="color" label="Notification Body Color" class="notificationBodyColor slds-m-bottom_medium" value={notificationBodyColor} 
-                            onchange={handleNotificationBodyColorChange} field-level-help="Set the notification body text color. Example: #EA001E"></lightning-input>
-
-                        <lightning-input type="color" label="Notification Body Hover Color" class="notificationBodyHoverColor slds-m-bottom_medium" value={notificationBodyHoverColor} 
-                            onchange={handleNotificationBodyHoverColorChange} field-level-help="Set the notification body text hover color. Example: #EA001E"></lightning-input>
-
-                        <lightning-input type="color" label="Unread Notification Body Color" class="notificationBodyUnreadColor slds-m-bottom_medium" value={notificationBodyUnreadColor} 
-                            onchange={handleNotificationBodyUnreadColorChange} field-level-help="Set the unread notification body text color. Example: #EA001E"></lightning-input>
-
-                        <div class="slds-m-bottom_medium">
-                            <lightning-select
-                            name="notificationBodyTextStyle"
-                            label="Notification Body Text Style"
-                            value={notificationBodyTextStyleSelected}
-                            options={textStyleOptions}
-                            onchange={handleNotificationBodyTextStyleChange}
-                            required class="notificationBodyTextStyle"></lightning-select>
-                        </div>
-
-
-                        <lightning-input type="color" label="Notification Date/Time Color" class="notificationDateTimeColor slds-m-bottom_medium" value={notificationDateTimeColor} 
-                            onchange={handleNotificationDateTimeColorChange} field-level-help="Set the notification Date/Time text color. Example: #EA001E"></lightning-input>
-
-                        <lightning-input type="color" label="Notification Date/Time Hover Color" class="notificationDateTimeHoverColor slds-m-bottom_medium" value={notificationDateTimeHoverColor} 
-                            onchange={handleNotificationDateTimeHoverColorChange} field-level-help="Set the notification Date/Time text hover color. Example: #EA001E"></lightning-input>
-
-                        <lightning-input type="color" label="Unread Notification Date/Time Color" class="notificationDateTimeUnreadColor slds-m-bottom_medium" value={notificationDateTimeUnreadColor} 
-                            onchange={handleNotificationDateTimeUnreadColorChange} field-level-help="Set the unread notification Date/Time text color. Example: #EA001E"></lightning-input>
-
-                        <div class="slds-m-bottom_medium">
-                            <lightning-select
-                            name="notificationDateTimeTextStyle"
-                            label="Notification Date/Time Text Style"
-                            value={notificationDateTimeTextStyleSelected}
-                            options={textStyleOptions}
-                            onchange={handleNotificationDateTimeTextStyleChange}
-                            required class="notificationDateTimeTextStyle"></lightning-select>
-                        </div>
-
-
-
-                        <lightning-input type="color" label="Notification Mark Read Color" class="notificationMarkReadColor slds-m-bottom_medium" value={notificationMarkReadColor} 
-                        onchange={handleNotificationMarkReadColorChange} field-level-help="Set the notification Mark Read/Unread text color. Example: #EA001E"></lightning-input>
-
-                        <lightning-input type="color" label="Notification Mark Unread Color" class="notificationMarkReadUnreadColor slds-m-bottom_medium" value={notificationMarkReadUnreadColor} 
-                            onchange={handleNotificationMarkReadUnreadColorChange} field-level-help="Set the unread notification Mark Read text color. Example: #EA001E"></lightning-input>
-
-                        <div class="slds-m-bottom_medium">
-                            <lightning-select
-                            name="notificationMarkReadTextStyle"
-                            label="Notification Mark Read/Unread Text Style"
-                            value={notificationMarkReadTextStyleSelected}
-                            options={textStyleOptions}
-                            onchange={handleNotificationMarkReadTextStyleChange}
-                            required class="notificationMarkReadTextStyle"></lightning-select>
-                        </div>
                         
+                        <lightning-accordion allow-multiple-sections-open
+                        active-section-name=notificationUnreadConfig>
+                            <lightning-accordion-section name="notificationUnreadConfig" label="Unread">
 
+                                <div class="slds-p-left_small slds-p-top_medium">
+
+                                    <lightning-input type="color" label="Body Background Color" class="notificationBodyUnreadBackgroundColor slds-m-bottom_medium" value={notificationBodyUnreadBackgroundColor} 
+                                        onchange={handleNotificationBodyUnreadBackgroundColorChange} field-level-help="Set the unread notification body background text color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Body Hover Background Color" class="notificationBodyUnreadHoverBackgroundColor slds-m-bottom_medium" value={notificationBodyUnreadHoverBackgroundColor} 
+                                        onchange={handleNotificationBodyUnreadHoverBackgroundColorChange} field-level-help="Set the unread notification body hover background text color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Title Color" class="notificationTitleUnreadColor slds-m-bottom_medium" value={notificationTitleUnreadColor} 
+                                    onchange={handleNotificationTitleUnreadColorChange} field-level-help="Set the unread notification title color. Example: #EA001E"></lightning-input>
+        
+                                    <lightning-input type="color" label="Title Hover Color" class="notificationTitleUnreadHoverColor slds-m-bottom_medium" value={notificationTitleUnreadHoverColor} 
+                                        onchange={handleNotificationTitleUnreadHoverColorChange} field-level-help="Set the unread notification title Unread hover color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Body Text Color" class="notificationBodyUnreadColor slds-m-bottom_medium" value={notificationBodyUnreadColor} 
+                                        onchange={handleNotificationBodyUnreadColorChange} field-level-help="Set the unread notification body text color. Example: #EA001E"></lightning-input>
+            
+                                    <lightning-input type="color" label="Body Hover Text Color" class="notificationBodyUnreadHoverColor slds-m-bottom_medium" value={notificationBodyUnreadHoverColor} 
+                                        onchange={handleNotificationBodyUnreadHoverColorChange} field-level-help="Set the unread notification body text hover color. Example: #EA001E"></lightning-input>
+            
+                                    <lightning-input type="color" label="Date/Time Color" class="notificationDateTimeUnreadColor slds-m-bottom_medium" value={notificationDateTimeUnreadColor} 
+                                        onchange={handleNotificationDateTimeUnreadColorChange} field-level-help="Set the unread notification Date/Time text color. Example: #EA001E"></lightning-input>
+                                    
+                                    <lightning-input type="color" label="Date/Time Hover Color" class="notificationDateTimeUnreadHoverColor slds-m-bottom_medium" value={notificationDateTimeUnreadHoverColor} 
+                                        onchange={handleNotificationDateTimeUnreadHoverColorChange} field-level-help="Set the unread notification Date/Time text hover color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Mark Read Color" class="notificationMarkReadColor slds-m-bottom_medium" value={notificationMarkReadColor} 
+                                        onchange={handleNotificationMarkReadColorChange} field-level-help="Set the notification Mark Read text color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Mark Read Hover Color" class="notificationMarkReadHoverColor slds-m-bottom_medium" value={notificationMarkReadHoverColor} 
+                                        onchange={handleNotificationMarkReadHoverColorChange} field-level-help="Set the notification Mark Read text hover color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Assistive Unread Mark Color" class="notificationAssistiveUnreadMarkColor slds-m-bottom_medium" value={notificationAssistiveUnreadMarkColor} 
+                                        onchange={handleNotificationAssistiveUnreadMarkColorChange} field-level-help="Set the notification's assistive mark color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Assistive Unread Mark Hover Color" class="notificationAssistiveUnreadMarkHoverColor slds-m-bottom_medium" value={notificationAssistiveUnreadMarkHoverColor} 
+                                        onchange={handleNotificationAssistiveUnreadMarkHoverColorChange} field-level-help="Set the notification's assistive mark hover color. Example: #EA001E"></lightning-input>
+
+                                </div>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+
+                        <lightning-accordion allow-multiple-sections-open
+                        active-section-name=notificationReadConfig>
+                            <lightning-accordion-section name="notificationReadConfig" label="Read">
+
+                                <div class="slds-p-left_small slds-p-top_medium">
+
+                                    <lightning-input type="color" label="Body Background Color" class="notificationBodyBackgroundColor slds-m-bottom_medium" value={notificationBodyBackgroundColor} 
+                                        onchange={handleNotificationBodyBackgroundColorChange} field-level-help="Set the read notification body background text color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Body Hover Background Color" class="notificationBodyHoverBackgroundColor slds-m-bottom_medium" value={notificationBodyHoverBackgroundColor} 
+                                        onchange={handleNotificationBodyHoverBackgroundColorChange} field-level-help="Set the read notification body text hover background color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Title Color" class="notificationTitleColor slds-m-bottom_medium" value={notificationTitleColor} 
+                                        onchange={handleNotificationTitleColorChange} field-level-help="Set the read notification title color. Example: #EA001E"></lightning-input>
+            
+                                    <lightning-input type="color" label="Title Hover Color" class="notificationTitleHoverColor slds-m-bottom_medium" value={notificationTitleHoverColor} 
+                                        onchange={handleNotificationTitleHoverColorChange} field-level-help="Set the read notification title hover color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Body Text Color" class="notificationBodyColor slds-m-bottom_medium" value={notificationBodyColor} 
+                                        onchange={handleNotificationBodyColorChange} field-level-help="Set the read notification body text color. Example: #EA001E"></lightning-input>
+            
+                                    <lightning-input type="color" label="Body Hover Text Color" class="notificationBodyHoverColor slds-m-bottom_medium" value={notificationBodyHoverColor} 
+                                        onchange={handleNotificationBodyHoverColorChange} field-level-help="Set the read notification body text hover color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Date/Time Color" class="notificationDateTimeColor slds-m-bottom_medium" value={notificationDateTimeColor} 
+                                        onchange={handleNotificationDateTimeColorChange} field-level-help="Set the read notification Date/Time text color. Example: #EA001E"></lightning-input> 
+            
+                                    <lightning-input type="color" label="Date/Time Hover Color" class="notificationDateTimeHoverColor slds-m-bottom_medium" value={notificationDateTimeHoverColor} 
+                                        onchange={handleNotificationDateTimeHoverColorChange} field-level-help="Set the read notification Date/Time text hover color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Mark Unread Color" class="notificationMarkReadUnreadColor slds-m-bottom_medium" value={notificationMarkReadUnreadColor} 
+                                        onchange={handleNotificationMarkReadUnreadColorChange} field-level-help="Set the unread notification Mark Read text color. Example: #EA001E"></lightning-input>
+
+                                    <lightning-input type="color" label="Mark Unread Hover Color" class="notificationMarkUnreadHoverColor slds-m-bottom_medium" value={notificationMarkUnreadHoverColor} 
+                                        onchange={handleNotificationMarkUnreadHoverColorChange} field-level-help="Set the notification Mark Unread text hover color. Example: #EA001E"></lightning-input>
+                                
+                                </div>
+
+                            </lightning-accordion-section>
+                        </lightning-accordion>
+
+                        <lightning-accordion allow-multiple-sections-open
+                        active-section-name=notificationTextStyleConfig>
+                            <lightning-accordion-section name="notificationTextStyleConfig" label="Text Styles">
+                                <div class="slds-p-left_small slds-p-top_medium">
+                                    <div class="slds-m-bottom_medium">
+                                        <lightning-select
+                                        name="notificationTitleTextStyle"
+                                        label="Title Text Style"
+                                        value={notificationTitleTextStyleSelected}
+                                        options={textStyleOptions}
+                                        onchange={handleNotificationTitleTextStyleChange}
+                                        required class="notificationTitleTextStyle"></lightning-select>
+                                    </div>
+
+                                    <div class="slds-m-bottom_medium">
+                                        <lightning-select
+                                        name="notificationBodyTextStyle"
+                                        label="Body Text Style"
+                                        value={notificationBodyTextStyleSelected}
+                                        options={textStyleOptions}
+                                        onchange={handleNotificationBodyTextStyleChange}
+                                        required class="notificationBodyTextStyle"></lightning-select>
+                                    </div>
+
+                                    <div class="slds-m-bottom_medium">
+                                        <lightning-select
+                                        name="notificationDateTimeTextStyle"
+                                        label="Date/Time Text Style"
+                                        value={notificationDateTimeTextStyleSelected}
+                                        options={textStyleOptions}
+                                        onchange={handleNotificationDateTimeTextStyleChange}
+                                        required class="notificationDateTimeTextStyle"></lightning-select>
+                                    </div>
+
+                                    <div class="slds-m-bottom_medium">
+                                        <lightning-select
+                                        name="notificationMarkReadTextStyle"
+                                        label="Mark Read/Unread Text Style"
+                                        value={notificationMarkReadTextStyleSelected}
+                                        options={textStyleOptions}
+                                        onchange={handleNotificationMarkReadTextStyleChange}
+                                        required class="notificationMarkReadTextStyle"></lightning-select>
+                                    </div>
+                                </div>
+                            </lightning-accordion-section>
+                        </lightning-accordion>
 
                     </div>
                 </lightning-accordion-section>

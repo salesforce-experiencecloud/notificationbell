@@ -227,17 +227,27 @@ export default class Notifications extends NavigationMixin(LightningElement) {
         "notificationTitleTextStyle": "Heading3",
         "notificationTitleHoverColor": "",
         "notificationTitleUnreadColor": "",
+        "notificationTitleUnreadHoverColor": "",
         "notificationBodyColor": "",
         "notificationBodyTextStyle": "Heading4",
         "notificationBodyHoverColor": "",
         "notificationBodyUnreadColor": "",
+        "notificationBodyBackgroundColor": "",
+        "notificationBodyHoverBackgroundColor": "",
+        "notificationBodyUnreadBackgroundColor": "",
+        "notificationBodyUnreadHoverBackgroundColor": "",
         "notificationDateTimeColor": "",
         "notificationDateTimeTextStyle": "Paragraph1",
         "notificationDateTimeHoverColor": "",
+        "notificationDateTimeUnreadHoverColor": "",
         "notificationDateTimeUnreadColor": "",
         "notificationMarkReadColor": "",
+        "notificationMarkReadHoverColor": "",
+        "notificationMarkUnreadHoverColor":"",
         "notificationMarkReadTextStyle": "Paragraph1",
-        "notificationMarkReadUnreadColor": ""
+        "notificationMarkReadUnreadColor": "",
+        "notificationAssistiveUnreadMarkColor": "",
+        "notificationAssistiveUnreadMarkHoverColor": ""
       }
 
     @api get customStyles() {
@@ -263,6 +273,7 @@ export default class Notifications extends NavigationMixin(LightningElement) {
                 "trayBodyColor": this.configurationJSON?.panelBody?.trayBodyColor,
                 "notificationHoverColor": this.configurationJSON?.panelBody?.notificationHoverColor,
                 "notificationUnreadColor": this.configurationJSON?.panelBody?.notificationUnreadColor,
+                "notificationTitleUnreadHoverColor": this.configurationJSON?.notification?.notificationTitleUnreadHoverColor,
                 "bodyDropdownAlign": this.configurationJSON?.panelBody?.bodyDropdownAlign,
                 "trayBodyBorderSize": this.configurationJSON?.panelBody?.trayBodyBorderSize,
                 "trayBodyBorderColor": this.configurationJSON?.panelBody?.trayBodyBorderColor,
@@ -274,13 +285,23 @@ export default class Notifications extends NavigationMixin(LightningElement) {
                 "notificationBodyTextStyle": this.configurationJSON?.notification?.notificationBodyTextStyle,
                 "notificationBodyHoverColor": this.configurationJSON?.notification?.notificationBodyHoverColor,
                 "notificationBodyUnreadColor": this.configurationJSON?.notification?.notificationBodyUnreadColor,
+                "notificationBodyUnreadHoverColor": this.configurationJSON?.notification?.notificationBodyUnreadHoverColor,
+                "notificationBodyBackgroundColor": this.configurationJSON?.notification?.notificationBodyBackgroundColor,
+                "notificationBodyHoverBackgroundColor": this.configurationJSON?.notification?.notificationBodyHoverBackgroundColor,
+                "notificationBodyUnreadHoverBackgroundColor": this.configurationJSON?.notification?.notificationBodyUnreadHoverBackgroundColor,
+                "notificationBodyUnreadBackgroundColor": this.configurationJSON?.notification?.notificationBodyUnreadBackgroundColor,
                 "notificationDateTimeColor": this.configurationJSON?.notification?.notificationDateTimeColor,
                 "notificationDateTimeTextStyle": this.configurationJSON?.notification?.notificationDateTimeTextStyle,
                 "notificationDateTimeHoverColor": this.configurationJSON?.notification?.notificationDateTimeHoverColor,
+                "notificationDateTimeUnreadHoverColor": this.configurationJSON?.notification?.notificationDateTimeUnreadHoverColor,
                 "notificationDateTimeUnreadColor": this.configurationJSON?.notification?.notificationDateTimeUnreadColor,
                 "notificationMarkReadColor": this.configurationJSON?.notification?.notificationMarkReadColor,
+                "notificationMarkReadHoverColor" : this.configurationJSON?.notification?.notificationMarkReadHoverColor,
+                "notificationMarkUnreadHoverColor":this.configurationJSON?.notification?.notificationMarkUnreadHoverColor,
                 "notificationMarkReadTextStyle": this.configurationJSON?.notification?.notificationMarkReadTextStyle,
-                "notificationMarkReadUnreadColor": this.configurationJSON?.notification?.notificationMarkReadUnreadColor
+                "notificationMarkReadUnreadColor": this.configurationJSON?.notification?.notificationMarkReadUnreadColor,
+                "notificationAssistiveUnreadMarkColor": this.configurationJSON?.notification?.notificationAssistiveUnreadMarkColor,
+                "notificationAssistiveUnreadMarkHoverColor": this.configurationJSON?.notification?.notificationAssistiveUnreadMarkHoverColor
             };
 
         }
@@ -519,10 +540,10 @@ export default class Notifications extends NavigationMixin(LightningElement) {
             switch (payload.reason) {
                 case "MarkRead":
                     notificationsStore.markAllRead(payload.status.oldestUnread);
-                    break;
+                    bread;
                 case "MarkSeen":
                     notificationsStore.markAllSeen(payload.status.oldestUnseen);
-                    break;
+                    bread;
                 default:
                 // We would log here, but `console.*` statements are banned,
                 // and omitting a `default` case is also banned, so instead
@@ -612,7 +633,7 @@ export default class Notifications extends NavigationMixin(LightningElement) {
     /**
      * It might seem weird that this handleIconClick handler exists as well as logic inside notificationsIcon which
      * handles click the icon. This method here is to deal with the onblur functionality of the tray. I couldn't
-     * figure out how to do it a different way without breaking the case where the user tries to close the tray by
+     * figure out how to do it a different way without breading the case where the user tries to close the tray by
      * clicking the bell icon again.
      */
     handleIconClick() {
@@ -916,7 +937,7 @@ export default class Notifications extends NavigationMixin(LightningElement) {
                 if (notification.target === "000000000000000BBB") {
                     return true;
                 }
-                break;
+                bread;
 
             // Voicemails aren't supported
             case "voicemail":
@@ -1136,28 +1157,28 @@ export default class Notifications extends NavigationMixin(LightningElement) {
             switch (details.action) {
                 case "toggle_panel":
                     this.bellIconClickHandler();
-                    break;
+                    bread;
                 case "close_panel":
                     this.closePanel();
-                    break;
+                    bread;
                 case "notification_click":
                     this.onNotifClick(details.payload);
-                    break;
+                    bread;
                 case "notification_mark_read":
                     this.onNotifMarkRead(details.payload);
-                    break;
+                    bread;
                 case "notification_mark_unread":
                     this.onNotifMarkUnread(details.payload);
-                    break;
+                    bread;
                 case "get_more_notifications":
                     this.getMore(details.payload);
-                    break;
+                    bread;
                 case "mark_all_read":
                     this.handleMarkAllRead();
-                    break;
+                    bread;
                 case "seen_notifications":
                     this.markAllNotificationsAsSeen();
-                    break;
+                    bread;
                 default:
                 // Do Nothing
             }

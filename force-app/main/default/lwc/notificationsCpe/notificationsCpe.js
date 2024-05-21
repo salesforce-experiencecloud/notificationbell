@@ -39,17 +39,28 @@ export default class NotificationsCpe extends LightningElement {
     @track notificationTitleColor;
     @track notificationTitleHoverColor;
     @track notificationTitleUnreadColor;
+    @track notificationTitleUnreadHoverColor;
     @track notificationTitleTextStyleSelected = 'Heading3';
     @track notificationBodyColor;
+    @track notificationBodyBackgroundColor;
     @track notificationBodyTextStyleSelected = 'Heading4';        
     @track notificationBodyHoverColor;
+    @track notificationBodyHoverBackgroundColor;
     @track notificationBodyUnreadColor;
+    @track notificationBodyUnreadHoverColor;
+    @track notificationBodyUnreadBackgroundColor;
+    @track notificationBodyUnreadHoverBackgroundColor;
     @track notificationDateTimeColor;
     @track notificationDateTimeHoverColor;
     @track notificationDateTimeUnreadColor;
+    @track notificationDateTimeUnreadHoverColor;
     @track notificationDateTimeTextStyleSelected = 'Paragraph1';
     @track notificationMarkReadColor;
+    @track notificationMarkReadHoverColor;
+    @track notificationMarkUnreadHoverColor;
     @track notificationMarkReadUnreadColor;
+    @track notificationAssistiveUnreadMarkColor;
+    @track notificationAssistiveUnreadMarkHoverColor;
     @track notificationMarkReadTextStyleSelected = 'Paragraph1';
     @track notificationImageHide = false;
     @track notificationImageOverride = false;
@@ -223,6 +234,7 @@ export default class NotificationsCpe extends LightningElement {
         this.notificationTitleColor = valuetmp?.notification?.notificationTitleColor;
         this.notificationTitleHoverColor = valuetmp?.notification?.notificationTitleHoverColor;
         this.notificationTitleUnreadColor = valuetmp?.notification?.notificationTitleUnreadColor;
+        this.notificationTitleUnreadHoverColor = valuetmp?.notification?.notificationTitleUnreadHoverColor;
 
         this.notificationTitleTextStyleSelected =  valuetmp?.notification?.notificationTitleTextStyle;
         this.notificationTitleTextStyleSelected = (this.notificationTitleTextStyleSelected !== undefined && this.notificationTitleTextStyleSelected !== null && this.notificationTitleTextStyleSelected.trim() !== '') ? this.notificationTitleTextStyleSelected : 'Heading3' ;
@@ -234,10 +246,15 @@ export default class NotificationsCpe extends LightningElement {
         }
 
 
+        this.notificationBodyBackgroundColor = valuetmp?.notification?.notificationBodyBackgroundColor;
+        this.notificationBodyHoverBackgroundColor = valuetmp?.notification?.notificationBodyHoverBackgroundColor;
+        this.notificationBodyUnreadBackgroundColor = valuetmp?.notification?.notificationBodyUnreadBackgroundColor;
+        this.notificationBodyUnreadHoverBackgroundColor = valuetmp?.notification?.notificationBodyUnreadHoverBackgroundColor;
 
         this.notificationBodyColor = valuetmp?.notification?.notificationBodyColor;
         this.notificationBodyHoverColor = valuetmp?.notification?.notificationBodyHoverColor;
         this.notificationBodyUnreadColor = valuetmp?.notification?.notificationBodyUnreadColor;
+        this.notificationBodyUnreadHoverColor = valuetmp?.notification?.notificationBodyUnreadHoverColor;
 
         this.notificationBodyTextStyleSelected =  valuetmp?.notification?.notificationBodyTextStyle;
         this.notificationBodyTextStyleSelected = (this.notificationBodyTextStyleSelected !== undefined && this.notificationBodyTextStyleSelected !== null && this.notificationBodyTextStyleSelected.trim() !== '') ? this.notificationBodyTextStyleSelected : 'Heading4' ;
@@ -253,6 +270,7 @@ export default class NotificationsCpe extends LightningElement {
         this.notificationDateTimeColor = valuetmp?.notification?.notificationDateTimeColor;
         this.notificationDateTimeHoverColor = valuetmp?.notification?.notificationDateTimeHoverColor;
         this.notificationDateTimeUnreadColor = valuetmp?.notification?.notificationDateTimeUnreadColor;
+        this.notificationDateTimeUnreadHoverColor = valuetmp?.notification?.notificationDateTimeUnreadHoverColor;
 
         this.notificationDateTimeTextStyleSelected =  valuetmp?.notification?.notificationDateTimeTextStyle;
         this.notificationDateTimeTextStyleSelected = (this.notificationDateTimeTextStyleSelected !== undefined && this.notificationDateTimeTextStyleSelected !== null && this.notificationDateTimeTextStyleSelected.trim() !== '') ? this.notificationDateTimeTextStyleSelected : 'Paragraph1' ;
@@ -266,7 +284,12 @@ export default class NotificationsCpe extends LightningElement {
 
 
         this.notificationMarkReadColor = valuetmp?.notification?.notificationMarkReadColor;
+        this.notificationMarkReadHoverColor = valuetmp?.notification?.notificationMarkReadHoverColor;
+        this.notificationMarkUnreadHoverColor = valuetmp?.notification?.notificationMarkUnreadHoverColor;
         this.notificationMarkReadUnreadColor = valuetmp?.notification?.notificationMarkReadUnreadColor;
+        this.notificationAssistiveUnreadMarkColor = valuetmp?.notification?.notificationAssistiveUnreadMarkColor;
+        this.notificationAssistiveUnreadMarkHoverColor = valuetmp?.notification?.notificationAssistiveUnreadMarkHoverColor;
+
 
         this.notificationMarkReadTextStyleSelected =  valuetmp?.notification?.notificationMarkReadTextStyle;
         this.notificationMarkReadTextStyleSelected = (this.notificationMarkReadTextStyleSelected !== undefined && this.notificationMarkReadTextStyleSelected !== null && this.notificationMarkReadTextStyleSelected.trim() !== '') ? this.notificationMarkReadTextStyleSelected : 'Paragraph1' ;
@@ -414,17 +437,28 @@ export default class NotificationsCpe extends LightningElement {
         tmpvalue.notification.notificationTitleColor = this.notificationTitleColor;
         tmpvalue.notification.notificationTitleHoverColor = this.notificationTitleHoverColor;
         tmpvalue.notification.notificationTitleUnreadColor = this.notificationTitleUnreadColor;
+        tmpvalue.notification.notificationTitleUnreadHoverColor = this.notificationTitleUnreadHoverColor;
         tmpvalue.notification.notificationTitleTextStyle = this.notificationTitleTextStyleSelected;
         tmpvalue.notification.notificationBodyColor = this.notificationBodyColor;
         tmpvalue.notification.notificationBodyHoverColor = this.notificationBodyHoverColor;
         tmpvalue.notification.notificationBodyUnreadColor = this.notificationBodyUnreadColor;
+        tmpvalue.notification.notificationBodyUnreadHoverColor = this.notificationBodyUnreadHoverColor;
+        tmpvalue.notification.notificationBodyBackgroundColor = this.notificationBodyBackgroundColor;
+        tmpvalue.notification.notificationBodyHoverBackgroundColor = this.notificationBodyHoverBackgroundColor;
+        tmpvalue.notification.notificationBodyUnreadBackgroundColor = this.notificationBodyUnreadBackgroundColor;
+        tmpvalue.notification.notificationBodyUnreadHoverBackgroundColor = this.notificationBodyUnreadHoverBackgroundColor;
         tmpvalue.notification.notificationBodyTextStyle = this.notificationBodyTextStyleSelected;
         tmpvalue.notification.notificationDateTimeColor = this.notificationDateTimeColor;
         tmpvalue.notification.notificationDateTimeHoverColor = this.notificationDateTimeHoverColor;
         tmpvalue.notification.notificationDateTimeUnreadColor = this.notificationDateTimeUnreadColor;
+        tmpvalue.notification.notificationDateTimeUnreadHoverColor = this.notificationDateTimeUnreadHoverColor;
         tmpvalue.notification.notificationDateTimeTextStyle = this.notificationDateTimeTextStyleSelected;
         tmpvalue.notification.notificationMarkReadColor = this.notificationMarkReadColor;
+        tmpvalue.notification.notificationMarkReadHoverColor = this.notificationMarkReadHoverColor;
+        tmpvalue.notification.notificationMarkUnreadHoverColor = this.notificationMarkUnreadHoverColor;
         tmpvalue.notification.notificationMarkReadUnreadColor = this.notificationMarkReadUnreadColor;
+        tmpvalue.notification.notificationAssistiveUnreadMarkColor = this.notificationAssistiveUnreadMarkColor;
+        tmpvalue.notification.notificationAssistiveUnreadMarkHoverColor = this.notificationAssistiveUnreadMarkHoverColor;
         tmpvalue.notification.notificationMarkReadTextStyle = this.notificationMarkReadTextStyleSelected;
         tmpvalue.notification.notificationMarkReadText = this.notificationMarkReadText;
         tmpvalue.notification.notificationMarkUnreadText = this.notificationMarkUnreadText;
@@ -593,6 +627,12 @@ export default class NotificationsCpe extends LightningElement {
         this.validateValues();
     }
 
+    handleNotificationTitleUnreadHoverColorChange(e) {
+        
+        this.notificationTitleUnreadHoverColor = e.detail.value;
+        this.validateValues();
+    }
+
     handleNotificationTitleTextStyleChange(e) {
         this.notificationTitleTextStyleSelected = e.detail.value;
         this.validateValues();
@@ -613,6 +653,37 @@ export default class NotificationsCpe extends LightningElement {
     handleNotificationBodyUnreadColorChange(e) {
         
         this.notificationBodyUnreadColor = e.detail.value;
+        this.validateValues();
+    }
+
+    handleNotificationBodyUnreadHoverColorChange(e) {
+        
+        this.notificationBodyUnreadHoverColor = e.detail.value;
+        this.validateValues();
+    }
+    
+
+    handleNotificationBodyBackgroundColorChange(e) {
+        
+        this.notificationBodyBackgroundColor = e.detail.value;
+        this.validateValues();
+    }
+
+    handleNotificationBodyHoverBackgroundColorChange(e) {
+        
+        this.notificationBodyHoverBackgroundColor = e.detail.value;
+        this.validateValues();
+    }
+
+    handleNotificationBodyUnreadBackgroundColorChange(e) {
+        
+        this.notificationBodyUnreadBackgroundColor = e.detail.value;
+        this.validateValues();
+    }
+
+    handleNotificationBodyUnreadHoverBackgroundColorChange(e) {
+        
+        this.notificationBodyUnreadHoverBackgroundColor = e.detail.value;
         this.validateValues();
     }
 
@@ -639,6 +710,12 @@ export default class NotificationsCpe extends LightningElement {
         this.validateValues();
     }
 
+    handleNotificationDateTimeUnreadHoverColorChange(e) {
+        
+        this.notificationDateTimeUnreadHoverColor = e.detail.value;
+        this.validateValues();
+    }
+
     handleNotificationDateTimeTextStyleChange(e) {
         this.notificationDateTimeTextStyleSelected = e.detail.value;
         this.validateValues();
@@ -650,9 +727,33 @@ export default class NotificationsCpe extends LightningElement {
         this.validateValues();
     }
 
+    handleNotificationMarkReadHoverColorChange(e) {
+        
+        this.notificationMarkReadHoverColor = e.detail.value;
+        this.validateValues();
+    }
+    
+    handleNotificationMarkUnreadHoverColorChange(e) {
+        
+        this.notificationMarkUnreadHoverColor = e.detail.value;
+        this.validateValues();
+    }
+
     handleNotificationMarkReadUnreadColorChange(e) {
         
         this.notificationMarkReadUnreadColor = e.detail.value;
+        this.validateValues();
+    }
+
+    handleNotificationAssistiveUnreadMarkColorChange(e) {
+        
+        this.notificationAssistiveUnreadMarkColor = e.detail.value;
+        this.validateValues();
+    }
+
+    handleNotificationAssistiveUnreadMarkHoverColorChange(e) {
+        
+        this.notificationAssistiveUnreadMarkHoverColor = e.detail.value;
         this.validateValues();
     }
 

@@ -58,25 +58,38 @@ li:hover > a {
 .notification-unread .notification-text-title {
     color: var(--dxp-c-title-unread-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)));
 }
+.notification-unread:hover .notification-text-title {
+    color: var(--notificationTitleUnreadHoverColor, var(--dxp-c-title-hover-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)))) !important;
+}
 .notification-unread .notification-text {
     color: var(--dxp-c-body-unread-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)));
+}
+.notification-unread:hover .notification-text {
+    color: var(--notificationBodyUnreadHoverColor, var(--dxp-c-body-unread-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)))) !important;
 }
 .notification-unread .notification-age {
     color: var(--dxp-c-age-unread-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)));
 }
+.notification-unread:hover .notification-age {
+    color: var(--notificationDateTimeUnreadHoverColor, var(--dxp-c-age-unread-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)))) !important;
+}
 
 .notification-read:hover .notification-text-title {
-    color: var(--dxp-c-title-hover-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault))) !important;
+    color: var(--notificationTitleHoverColor, var(--dxp-c-title-hover-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)))) !important;
 }
 .notification-read:hover .notification-text {
-    color: var(--dxp-c-body-hover-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault))) !important;
+    color: var(--notificationBodyHoverColor, var(--dxp-c-body-hover-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)))) !important;
 }
 .notification-read:hover .notification-age {
     color: var(--dxp-c-age-hover-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault))) !important;
 }
+.notification-read:hover .notification-age {
+    color: var(--notificationDateTimeHoverColor, var(--dxp-c-age-unread-color-override, var(--dxp-g-root-contrast-1, var(--lwc-colorTextDefault)))) !important;
+}
 
-.notification-mark-read:hover {
-    color: var(--dxp-c-link-hover-color-override) !important;
+.notification-mark-read:hover,
+.notification-row:hover .notification-mark-read {
+    color: var(--markReadTextHoverColor, var(--dxp-c-link-hover-color-override)) !important;
 }
 
 .notification-text-title {
@@ -116,8 +129,12 @@ li:hover > a {
 }
 
 .assistive-unread-mark {
-    /* @sldsValidatorAllow */ color: var(--lwc-colorTextWeak, var(--lwc-colorTextWeakFallback));
-    /* @sldsValidatorAllow */ margin-left: var(--lwc-spacingXxSmall, var(--lwc-spacingXxSmallFallback));
+    /* @sldsValidatorAllow */ color: var(--assistiveUnreadMarkColor, var(--lwc-colorTextWeak, var(--lwc-colorTextWeakFallback)));
+}
+
+.notification-row:hover .assistive-unread-mark {
+        /* @sldsValidatorAllow */ color: var(--assistiveUnreadMarkHoverColor, var(--lwc-colorTextWeak, var(--lwc-colorTextWeakFallback)));
+
 }
 
 /* @sldsValidatorAllow */ .assistiveText { /*ASK JASON ABOUT THIS. THIS WASN'T IN THE AURA LISTROW FILE*/
