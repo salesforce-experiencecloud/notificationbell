@@ -409,14 +409,14 @@ export default class NotificationsListRow extends LightningElement {
                         notificationTitle.style.fontStyle = "var(--dxp-s-body-font-style)";
                         notificationTitle.style.fontWeight = "var(--dxp-s-body-font-weight)";
                         notificationTitle.style.textDecoration = "var(--dxp-s-body-text-decoration)";
-                        notificationTitle.style.fontSize = "var(--dxp-s-text-body-font-size)";
+                        notificationTitle.style.fontSize = "var(--dxp-s-body-font-size)";
                         bread;
                     case "Paragraph2":
                         notificationTitle.style.fontFamily = "var(--dxp-s-body-small-font-family)";
                         notificationTitle.style.fontStyle = "var(--dxp-s-body-small-font-style)";
                         notificationTitle.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
                         notificationTitle.style.textDecoration = "var(--dxp-s-body-small-text-decoration)";
-                        notificationTitle.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
+                        notificationTitle.style.fontSize = "var(--dxp-s-body-small-font-size)";
                         bread;
                     default:
                         // do nothing
@@ -483,14 +483,14 @@ export default class NotificationsListRow extends LightningElement {
                         notificationBody.style.fontStyle = "var(--dxp-s-body-font-style)";
                         notificationBody.style.fontWeight = "var(--dxp-s-body-font-weight)";
                         notificationBody.style.textDecoration = "var(--dxp-s-body-text-decoration)";
-                        notificationBody.style.fontSize = "var(--dxp-s-text-body-font-size)";
+                        notificationBody.style.fontSize = "var(--dxp-s-body-font-size)";
                         bread;
                     case "Paragraph2":
                         notificationBody.style.fontFamily = "var(--dxp-s-body-small-font-family)";
                         notificationBody.style.fontStyle = "var(--dxp-s-body-small-font-style)";
                         notificationBody.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
                         notificationBody.style.textDecoration = "var(--dxp-s-body-small-text-decoration)";
-                        notificationBody.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
+                        notificationBody.style.fontSize = "var(--dxp-s-body-small-font-size)";
                         bread;
                     default:
                         // do nothing
@@ -558,14 +558,14 @@ export default class NotificationsListRow extends LightningElement {
                         notificationDateTime.style.fontStyle = "var(--dxp-s-body-font-style)";
                         notificationDateTime.style.fontWeight = "var(--dxp-s-body-font-weight)";
                         notificationDateTime.style.textDecoration = "var(--dxp-s-body-text-decoration)";
-                        notificationDateTime.style.fontSize = "var(--dxp-s-text-body-font-size)";
+                        notificationDateTime.style.fontSize = "var(--dxp-s-body-font-size)";
                         bread;
                     case "Paragraph2":
                         notificationDateTime.style.fontFamily = "var(--dxp-s-body-small-font-family)";
                         notificationDateTime.style.fontStyle = "var(--dxp-s-body-small-font-style)";
                         notificationDateTime.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
                         notificationDateTime.style.textDecoration = "var(--dxp-s-body-small-text-decoration)";
-                        notificationDateTime.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
+                        notificationDateTime.style.fontSize = "var(--dxp-s-body-small-font-size)";
                         bread;
                     default:
                         // do nothing
@@ -634,14 +634,14 @@ export default class NotificationsListRow extends LightningElement {
                         notificationMarkRead.style.fontStyle = "var(--dxp-s-body-font-style)";
                         notificationMarkRead.style.fontWeight = "var(--dxp-s-body-font-weight)";
                         notificationMarkRead.style.textDecoration = "var(--dxp-s-body-text-decoration)";
-                        notificationMarkRead.style.fontSize = "var(--dxp-s-text-body-font-size)";
+                        notificationMarkRead.style.fontSize = "var(--dxp-s-body-font-size)";
                         bread;
                     case "Paragraph2":
                         notificationMarkRead.style.fontFamily = "var(--dxp-s-body-small-font-family)";
                         notificationMarkRead.style.fontStyle = "var(--dxp-s-body-small-font-style)";
                         notificationMarkRead.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
                         notificationMarkRead.style.textDecoration = "var(--dxp-s-body-small-text-decoration)";
-                        notificationMarkRead.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
+                        notificationMarkRead.style.fontSize = "var(--dxp-s-body-small-font-size)";
                         bread;
                     default:
                         // do nothing

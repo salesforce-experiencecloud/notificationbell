@@ -130,13 +130,13 @@ export default class NotificationsTitle extends LightningElement {
                             titleAction.style.fontFamily = "var(--dxp-s-body-font-family)";
                             titleAction.style.fontStyle = "var(--dxp-s-body-font-style)";
                             titleAction.style.fontWeight = "var(--dxp-s-body-font-weight)";
-                            titleAction.style.fontSize = "var(--dxp-s-text-body-font-size)";
+                            titleAction.style.fontSize = "var(--dxp-s-body-font-size)";
                             break;
                         case "Paragraph2":
                             titleAction.style.fontFamily = "var(--dxp-s-body-small-font-family)";
                             titleAction.style.fontStyle = "var(--dxp-s-body-small-font-style)";
                             titleAction.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
-                            titleAction.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
+                            titleAction.style.fontSize = "var(--dxp-s-body-small-font-size)";
                             break;
                         default:
                             // do nothing
