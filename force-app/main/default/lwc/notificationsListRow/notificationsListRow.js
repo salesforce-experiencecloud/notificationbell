@@ -375,49 +375,49 @@ export default class NotificationsListRow extends LightningElement {
                         notificationTitle.style.fontStyle = "inherit";
                         notificationTitle.style.fontWeight = "var(--lwc-fontWeightBoldFallback)";
                         notificationTitle.style.textDecoration = "inherit";
-                        bread;
+                        break;
                     case "Heading1":
                         notificationTitle.style.fontFamily = "var(--dxp-s-text-heading-extra-large-font-family)";
                         notificationTitle.style.fontStyle = "var(--dxp-s-text-heading-extra-large-font-style)";
                         notificationTitle.style.fontWeight = "var(--dxp-s-text-heading-extra-large-font-weight)";
                         notificationTitle.style.textDecoration = "var(--dxp-s-text-heading-extra-large-text-decoration)";
                         notificationTitle.style.fontSize = "var(--dxp-s-text-heading-extra-large-font-size)";
-                        bread;
+                        break;
                     case "Heading2":
                         notificationTitle.style.fontFamily = "var(--dxp-s-text-heading-large-font-family)";
                         notificationTitle.style.fontStyle = "var(--dxp-s-text-heading-large-font-style)";
                         notificationTitle.style.fontWeight = "var(--dxp-s-text-heading-large-font-weight)";
                         notificationTitle.style.textDecoration = "var(--dxp-s-text-heading-large-text-decoration)";
                         notificationTitle.style.fontSize = "var(--dxp-s-text-heading-large-font-size)";
-                        bread;
+                        break;
                     case "Heading3":
                         notificationTitle.style.fontFamily = "var(--dxp-s-text-heading-medium-font-family)";
                         notificationTitle.style.fontStyle = "var(--dxp-s-text-heading-medium-font-style)";
                         notificationTitle.style.fontWeight = "var(--dxp-s-text-heading-medium-font-weight)";
                         notificationTitle.style.textDecoration = "var(--dxp-s-text-heading-medium-text-decoration)";
                         notificationTitle.style.fontSize = "var(--dxp-s-text-heading-medium-font-size)";
-                        bread;
+                        break;
                     case "Heading4":
                         notificationTitle.style.fontFamily = "var(--dxp-s-text-heading-small-font-family)";
                         notificationTitle.style.fontStyle = "var(--dxp-s-text-heading-small-font-style)";
                         notificationTitle.style.fontWeight = "var(--dxp-s-text-heading-small-font-weight)";
                         notificationTitle.style.textDecoration = "var(--dxp-s-text-heading-small-text-decoration)";
                         notificationTitle.style.fontSize = "var(--dxp-s-text-heading-small-font-size)";
-                        bread;
+                        break;
                     case "Paragraph1":
                         notificationTitle.style.fontFamily = "var(--dxp-s-body-font-family)";
                         notificationTitle.style.fontStyle = "var(--dxp-s-body-font-style)";
                         notificationTitle.style.fontWeight = "var(--dxp-s-body-font-weight)";
                         notificationTitle.style.textDecoration = "var(--dxp-s-body-text-decoration)";
                         notificationTitle.style.fontSize = "var(--dxp-s-text-body-font-size)";
-                        bread;
+                        break;
                     case "Paragraph2":
                         notificationTitle.style.fontFamily = "var(--dxp-s-body-small-font-family)";
                         notificationTitle.style.fontStyle = "var(--dxp-s-body-small-font-style)";
                         notificationTitle.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
                         notificationTitle.style.textDecoration = "var(--dxp-s-body-small-text-decoration)";
                         notificationTitle.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
-                        bread;
+                        break;
                     default:
                         // do nothing
                 }
@@ -449,49 +449,49 @@ export default class NotificationsListRow extends LightningElement {
                         notificationBody.style.fontStyle = "inherit";
                         notificationBody.style.fontWeight = "var(--lwc-fontWeightRegularFallback)";
                         notificationBody.style.textDecoration = "inherit";
-                        bread;
+                        break;
                     case "Heading1":
                         notificationBody.style.fontFamily = "var(--dxp-s-text-heading-extra-large-font-family)";
                         notificationBody.style.fontStyle = "var(--dxp-s-text-heading-extra-large-font-style)";
                         notificationBody.style.fontWeight = "var(--dxp-s-text-heading-extra-large-font-weight)";
                         notificationBody.style.textDecoration = "var(--dxp-s-text-heading-extra-large-text-decoration)";
                         notificationBody.style.fontSize = "var(--dxp-s-text-heading-extra-large-font-size)";
-                        bread;
+                        break;
                     case "Heading2":
                         notificationBody.style.fontFamily = "var(--dxp-s-text-heading-large-font-family)";
                         notificationBody.style.fontStyle = "var(--dxp-s-text-heading-large-font-style)";
                         notificationBody.style.fontWeight = "var(--dxp-s-text-heading-large-font-weight)";
                         notificationBody.style.textDecoration = "var(--dxp-s-text-heading-large-text-decoration)";
                         notificationBody.style.fontSize = "var(--dxp-s-text-heading-large-font-size)";
-                        bread;
+                        break;
                     case "Heading3":
                         notificationBody.style.fontFamily = "var(--dxp-s-text-heading-medium-font-family)";
                         notificationBody.style.fontStyle = "var(--dxp-s-text-heading-medium-font-style)";
                         notificationBody.style.fontWeight = "var(--dxp-s-text-heading-medium-font-weight)";
                         notificationBody.style.textDecoration = "var(--dxp-s-text-heading-medium-text-decoration)";
                         notificationBody.style.fontSize = "var(--dxp-s-text-heading-medium-font-size)";
-                        bread;
+                        break;
                     case "Heading4":
                         notificationBody.style.fontFamily = "var(--dxp-s-text-heading-small-font-family)";
                         notificationBody.style.fontStyle = "var(--dxp-s-text-heading-small-font-style)";
                         notificationBody.style.fontWeight = "var(--dxp-s-text-heading-small-font-weight)";
                         notificationBody.style.textDecoration = "var(--dxp-s-text-heading-small-text-decoration)";
                         notificationBody.style.fontSize = "var(--dxp-s-text-heading-small-font-size)";
-                        bread;
+                        break;
                     case "Paragraph1":
                         notificationBody.style.fontFamily = "var(--dxp-s-body-font-family)";
                         notificationBody.style.fontStyle = "var(--dxp-s-body-font-style)";
                         notificationBody.style.fontWeight = "var(--dxp-s-body-font-weight)";
                         notificationBody.style.textDecoration = "var(--dxp-s-body-text-decoration)";
                         notificationBody.style.fontSize = "var(--dxp-s-text-body-font-size)";
-                        bread;
+                        break;
                     case "Paragraph2":
                         notificationBody.style.fontFamily = "var(--dxp-s-body-small-font-family)";
                         notificationBody.style.fontStyle = "var(--dxp-s-body-small-font-style)";
                         notificationBody.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
                         notificationBody.style.textDecoration = "var(--dxp-s-body-small-text-decoration)";
                         notificationBody.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
-                        bread;
+                        break;
                     default:
                         // do nothing
                 }
@@ -524,49 +524,49 @@ export default class NotificationsListRow extends LightningElement {
                         notificationDateTime.style.fontStyle = "inherit";
                         notificationDateTime.style.fontWeight = "inherit";
                         notificationDateTime.style.textDecoration = "inherit";
-                        bread;
+                        break;
                     case "Heading1":
                         notificationDateTime.style.fontFamily = "var(--dxp-s-text-heading-extra-large-font-family)";
                         notificationDateTime.style.fontStyle = "var(--dxp-s-text-heading-extra-large-font-style)";
                         notificationDateTime.style.fontWeight = "var(--dxp-s-text-heading-extra-large-font-weight)";
                         notificationDateTime.style.textDecoration = "var(--dxp-s-text-heading-extra-large-text-decoration)";
                         notificationDateTime.style.fontSize = "var(--dxp-s-text-heading-extra-large-font-size)";
-                        bread;
+                        break;
                     case "Heading2":
                         notificationDateTime.style.fontFamily = "var(--dxp-s-text-heading-large-font-family)";
                         notificationDateTime.style.fontStyle = "var(--dxp-s-text-heading-large-font-style)";
                         notificationDateTime.style.fontWeight = "var(--dxp-s-text-heading-large-font-weight)";
                         notificationDateTime.style.textDecoration = "var(--dxp-s-text-heading-large-text-decoration)";
                         notificationDateTime.style.fontSize = "var(--dxp-s-text-heading-large-font-size)";
-                        bread;
+                        break;
                     case "Heading3":
                         notificationDateTime.style.fontFamily = "var(--dxp-s-text-heading-medium-font-family)";
                         notificationDateTime.style.fontStyle = "var(--dxp-s-text-heading-medium-font-style)";
                         notificationDateTime.style.fontWeight = "var(--dxp-s-text-heading-medium-font-weight)";
                         notificationDateTime.style.textDecoration = "var(--dxp-s-text-heading-medium-text-decoration)";
                         notificationDateTime.style.fontSize = "var(--dxp-s-text-heading-medium-font-size)";
-                        bread;
+                        break;
                     case "Heading4":
                         notificationDateTime.style.fontFamily = "var(--dxp-s-text-heading-small-font-family)";
                         notificationDateTime.style.fontStyle = "var(--dxp-s-text-heading-small-font-style)";
                         notificationDateTime.style.fontWeight = "var(--dxp-s-text-heading-small-font-weight)";
                         notificationDateTime.style.textDecoration = "var(--dxp-s-text-heading-small-text-decoration)";
                         notificationDateTime.style.fontSize = "var(--dxp-s-text-heading-small-font-size)";
-                        bread;
+                        break;
                     case "Paragraph1":
                         notificationDateTime.style.fontFamily = "var(--dxp-s-body-font-family)";
                         notificationDateTime.style.fontStyle = "var(--dxp-s-body-font-style)";
                         notificationDateTime.style.fontWeight = "var(--dxp-s-body-font-weight)";
                         notificationDateTime.style.textDecoration = "var(--dxp-s-body-text-decoration)";
                         notificationDateTime.style.fontSize = "var(--dxp-s-text-body-font-size)";
-                        bread;
+                        break;
                     case "Paragraph2":
                         notificationDateTime.style.fontFamily = "var(--dxp-s-body-small-font-family)";
                         notificationDateTime.style.fontStyle = "var(--dxp-s-body-small-font-style)";
                         notificationDateTime.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
                         notificationDateTime.style.textDecoration = "var(--dxp-s-body-small-text-decoration)";
                         notificationDateTime.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
-                        bread;
+                        break;
                     default:
                         // do nothing
                 }
@@ -600,49 +600,49 @@ export default class NotificationsListRow extends LightningElement {
                         notificationMarkRead.style.fontStyle = "inherit";
                         notificationMarkRead.style.fontWeight = "inherit";
                         notificationMarkRead.style.textDecoration = "inherit";
-                        bread;
+                        break;
                     case "Heading1":
                         notificationMarkRead.style.fontFamily = "var(--dxp-s-text-heading-extra-large-font-family)";
                         notificationMarkRead.style.fontStyle = "var(--dxp-s-text-heading-extra-large-font-style)";
                         notificationMarkRead.style.fontWeight = "var(--dxp-s-text-heading-extra-large-font-weight)";
                         notificationMarkRead.style.textDecoration = "var(--dxp-s-text-heading-extra-large-text-decoration)";
                         notificationMarkRead.style.fontSize = "var(--dxp-s-text-heading-extra-large-font-size)";
-                        bread;
+                        break;
                     case "Heading2":
                         notificationMarkRead.style.fontFamily = "var(--dxp-s-text-heading-large-font-family)";
                         notificationMarkRead.style.fontStyle = "var(--dxp-s-text-heading-large-font-style)";
                         notificationMarkRead.style.fontWeight = "var(--dxp-s-text-heading-large-font-weight)";
                         notificationMarkRead.style.textDecoration = "var(--dxp-s-text-heading-large-text-decoration)";
                         notificationMarkRead.style.fontSize = "var(--dxp-s-text-heading-large-font-size)";
-                        bread;
+                        break;
                     case "Heading3":
                         notificationMarkRead.style.fontFamily = "var(--dxp-s-text-heading-medium-font-family)";
                         notificationMarkRead.style.fontStyle = "var(--dxp-s-text-heading-medium-font-style)";
                         notificationMarkRead.style.fontWeight = "var(--dxp-s-text-heading-medium-font-weight)";
                         notificationMarkRead.style.textDecoration = "var(--dxp-s-text-heading-medium-text-decoration)";
                         notificationMarkRead.style.fontSize = "var(--dxp-s-text-heading-medium-font-size)";
-                        bread;
+                        break;
                     case "Heading4":
                         notificationMarkRead.style.fontFamily = "var(--dxp-s-text-heading-small-font-family)";
                         notificationMarkRead.style.fontStyle = "var(--dxp-s-text-heading-small-font-style)";
                         notificationMarkRead.style.fontWeight = "var(--dxp-s-text-heading-small-font-weight)";
                         notificationMarkRead.style.textDecoration = "var(--dxp-s-text-heading-small-text-decoration)";
                         notificationMarkRead.style.fontSize = "var(--dxp-s-text-heading-small-font-size)";
-                        bread;
+                        break;
                     case "Paragraph1":
                         notificationMarkRead.style.fontFamily = "var(--dxp-s-body-font-family)";
                         notificationMarkRead.style.fontStyle = "var(--dxp-s-body-font-style)";
                         notificationMarkRead.style.fontWeight = "var(--dxp-s-body-font-weight)";
                         notificationMarkRead.style.textDecoration = "var(--dxp-s-body-text-decoration)";
                         notificationMarkRead.style.fontSize = "var(--dxp-s-text-body-font-size)";
-                        bread;
+                        break;
                     case "Paragraph2":
                         notificationMarkRead.style.fontFamily = "var(--dxp-s-body-small-font-family)";
                         notificationMarkRead.style.fontStyle = "var(--dxp-s-body-small-font-style)";
                         notificationMarkRead.style.fontWeight = "var(--dxp-s-body-small-font-weight)";
                         notificationMarkRead.style.textDecoration = "var(--dxp-s-body-small-text-decoration)";
                         notificationMarkRead.style.fontSize = "var(--dxp-s-text-body-small-font-size)";
-                        bread;
+                        break;
                     default:
                         // do nothing
                 }
