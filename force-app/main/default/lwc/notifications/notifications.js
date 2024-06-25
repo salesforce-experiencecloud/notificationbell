@@ -540,10 +540,10 @@ export default class Notifications extends NavigationMixin(LightningElement) {
             switch (payload.reason) {
                 case "MarkRead":
                     notificationsStore.markAllRead(payload.status.oldestUnread);
-                    bread;
+                    break;
                 case "MarkSeen":
                     notificationsStore.markAllSeen(payload.status.oldestUnseen);
-                    bread;
+                    break;
                 default:
                 // We would log here, but `console.*` statements are banned,
                 // and omitting a `default` case is also banned, so instead
@@ -937,7 +937,7 @@ export default class Notifications extends NavigationMixin(LightningElement) {
                 if (notification.target === "000000000000000BBB") {
                     return true;
                 }
-                bread;
+                break;
 
             // Voicemails aren't supported
             case "voicemail":
@@ -1157,28 +1157,28 @@ export default class Notifications extends NavigationMixin(LightningElement) {
             switch (details.action) {
                 case "toggle_panel":
                     this.bellIconClickHandler();
-                    bread;
+                    break;
                 case "close_panel":
                     this.closePanel();
-                    bread;
+                    break;
                 case "notification_click":
                     this.onNotifClick(details.payload);
-                    bread;
+                    break;
                 case "notification_mark_read":
                     this.onNotifMarkRead(details.payload);
-                    bread;
+                    break;
                 case "notification_mark_unread":
                     this.onNotifMarkUnread(details.payload);
-                    bread;
+                    break;
                 case "get_more_notifications":
                     this.getMore(details.payload);
-                    bread;
+                    break;
                 case "mark_all_read":
                     this.handleMarkAllRead();
-                    bread;
+                    break;
                 case "seen_notifications":
                     this.markAllNotificationsAsSeen();
-                    bread;
+                    break;
                 default:
                 // Do Nothing
             }
