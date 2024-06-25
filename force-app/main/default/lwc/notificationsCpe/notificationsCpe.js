@@ -54,7 +54,7 @@ export default class NotificationsCpe extends LightningElement {
     @track notificationDateTimeHoverColor;
     @track notificationDateTimeUnreadColor;
     @track notificationDateTimeUnreadHoverColor;
-    @track notificationDateTimeTextStyleSelected = 'Paragraph1';
+    @track notificationDateTimeTextStyleSelected = 'Paragraph2';
     @track notificationMarkReadColor;
     @track notificationMarkReadHoverColor;
     @track notificationMarkUnreadHoverColor;
@@ -273,7 +273,7 @@ export default class NotificationsCpe extends LightningElement {
         this.notificationDateTimeUnreadHoverColor = valuetmp?.notification?.notificationDateTimeUnreadHoverColor;
 
         this.notificationDateTimeTextStyleSelected =  valuetmp?.notification?.notificationDateTimeTextStyle;
-        this.notificationDateTimeTextStyleSelected = (this.notificationDateTimeTextStyleSelected !== undefined && this.notificationDateTimeTextStyleSelected !== null && this.notificationDateTimeTextStyleSelected.trim() !== '') ? this.notificationDateTimeTextStyleSelected : 'Paragraph1' ;
+        this.notificationDateTimeTextStyleSelected = (this.notificationDateTimeTextStyleSelected !== undefined && this.notificationDateTimeTextStyleSelected !== null && this.notificationDateTimeTextStyleSelected.trim() !== '') ? this.notificationDateTimeTextStyleSelected : 'Paragraph2' ;
 
         let notificationDateTimeTextStyleEl = this.template.querySelector('.notificationDateTimeTextStyle');
         if(notificationDateTimeTextStyleEl !== undefined && notificationDateTimeTextStyleEl !== null) 

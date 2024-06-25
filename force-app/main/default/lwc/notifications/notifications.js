@@ -237,7 +237,7 @@ export default class Notifications extends NavigationMixin(LightningElement) {
         "notificationBodyUnreadBackgroundColor": "",
         "notificationBodyUnreadHoverBackgroundColor": "",
         "notificationDateTimeColor": "",
-        "notificationDateTimeTextStyle": "Paragraph1",
+        "notificationDateTimeTextStyle": "Paragraph2",
         "notificationDateTimeHoverColor": "",
         "notificationDateTimeUnreadHoverColor": "",
         "notificationDateTimeUnreadColor": "",
