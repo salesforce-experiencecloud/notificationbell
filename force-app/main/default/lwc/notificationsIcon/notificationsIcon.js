@@ -80,7 +80,7 @@ export default class NotificationsIcon extends LightningElement {
 
     set count(count) {
         this._count = count;
-        this._counterLabel = count > 20 ? NOTIFICATION_MAX_COUNT_EXCEEDED : String(count);
+        this._counterLabel = count > 50 ? '50+' : String(count);
     }
 
     get buttonClass() {
