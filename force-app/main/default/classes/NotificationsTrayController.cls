@@ -40,7 +40,7 @@ public with sharing class NotificationsTrayController {
 
             Map<String,Object> responseObject = (Map<String,Object>) JSON.deserializeUntyped(response);
             
-            resObject.put('mostRecentNotifications',filterOutNotifications(responseObject.get('notifications'), notificationType));
+            resObject.put('mostRecentNotifications',unescapeHTML(filterOutNotifications(responseObject.get('notifications'), notificationType)));
             //resObject.put('siteId', System.Site.getSiteId());
             //resObject.put('baseUrl', System.Site.getBaseUrl());
             //resObject.put('baseSecureUrl',System.Site.getBaseSecureUrl());
@@ -91,7 +91,7 @@ public with sharing class NotificationsTrayController {
 
                 Map<String,Object> responseObject = (Map<String,Object>) JSON.deserializeUntyped(response);
             
-                resObject.put('mostRecentNotifications',filterOutNotifications(responseObject.get('notifications'), notificationType));
+                resObject.put('mostRecentNotifications',unescapeHTML(filterOutNotifications(responseObject.get('notifications'), notificationType)));
                 //resObject.put('siteId', System.Site.getSiteId());
                 //resObject.put('baseUrl', System.Site.getBaseUrl());
                 //resObject.put('baseSecureUrl',System.Site.getBaseSecureUrl());
@@ -114,7 +114,7 @@ public with sharing class NotificationsTrayController {
     }
 
     @AuraEnabled
-    public static Object markNotificationsRead(String beforeDateTime) {
+    public static Object markNotificationsRead(String beforeDateTime, Integer numDays, Integer maxNumNotifications, String notificationType) {
         
         Map<String,Object> resObject = new Map<String,Object>();
 
@@ -139,7 +139,8 @@ public with sharing class NotificationsTrayController {
 
             Map<String,Object> responseObject = (Map<String,Object>) JSON.deserializeUntyped(response);
         
-            resObject.put('mostRecentNotifications',responseObject.get('notifications'));
+            return getNotifications(numDays, maxNumNotifications, notificationType);
+            //resObject.put('mostRecentNotifications',responseObject.get('notifications'));
             //debug purposes resObject.put('req',filterMap);
         }
         catch(Exception e) {
@@ -151,7 +152,7 @@ public with sharing class NotificationsTrayController {
     }
 
     @AuraEnabled
-    public static Object markNotificationsSeen(String beforeDateTime) {
+    public static Object markNotificationsSeen(String beforeDateTime, Integer numDays, Integer maxNumNotifications, String notificationType) {
        
         Map<String,Object> resObject = new Map<String,Object>();
 
@@ -176,7 +177,8 @@ public with sharing class NotificationsTrayController {
 
             Map<String,Object> responseObject = (Map<String,Object>) JSON.deserializeUntyped(response);
         
-            resObject.put('mostRecentNotifications',responseObject.get('notifications'));
+            return getNotifications(numDays, maxNumNotifications, notificationType);
+            //resObject.put('mostRecentNotifications',responseObject.get('notifications'));
             //debug purposes resObject.put('req',filterMap);
         }
         catch(Exception e) {
@@ -228,6 +230,33 @@ public with sharing class NotificationsTrayController {
     @AuraEnabled
     public static String getObjectAPINameByRecordId(Id recordId){
         return recordId.getsobjecttype() + '';
+    }
+
+    private static Object unescapeHTML(Object notifications) 
+    {
+        List<Object> notificationsList = (List<Object>) notifications;
+        List<Object> escapedNotificationsList = new List<Object>();
+        for(Object obj : notificationsList)
+        {
+            Map<String, Object> objMap = (Map<String,Object>) obj;
+            String messageBody = (String)objMap.get('messageBody');
+            if(messageBody != null && messageBody.trim() != '')
+            {
+                messageBody = messageBody.unescapeHtml4();
+                objMap.put('messageBody', messageBody);
+            }
+
+            String messageTitle = (String)objMap.get('messageTitle');
+            if(messageTitle != null && messageTitle.trim() != '')
+            {
+                messageTitle = messageTitle.unescapeHtml4();
+                objMap.put('messageTitle', messageTitle);
+            }
+
+            escapedNotificationsList.add(objMap);
+        }
+
+        return escapedNotificationsList;
     }
 
     private static Object filterOutNotifications(Object notifications, String notificationType) 

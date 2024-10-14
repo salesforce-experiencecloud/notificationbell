@@ -146,7 +146,25 @@ export default class NotificationsListRow extends LightningElement {
     }
 
     set notification(notification) {
-        this._notification = notification;
+
+        let tmpNotification = JSON.parse(JSON.stringify(notification));
+        
+        if(tmpNotification?.messageTitle !== undefined && tmpNotification?.messageTitle !== null && tmpNotification?.messageTitle.trim() != '')
+        {
+            tmpNotification.messageTitle = this.htmlDecode(tmpNotification.messageTitle);
+        }
+
+        if(tmpNotification?.messageBody !== undefined && tmpNotification?.messageBody !== null && tmpNotification?.messageBody.trim() != '')
+        {
+            tmpNotification.messageBody = this.htmlDecode(tmpNotification.messageBody);
+        }
+
+        if(tmpNotification?.message !== undefined && tmpNotification?.message !== null && tmpNotification?.message.trim() != '')
+        {
+            tmpNotification.message = this.htmlDecode(tmpNotification.message);
+        }
+
+        this._notification = tmpNotification;
     }
 
     get labels() {
@@ -650,6 +668,9 @@ export default class NotificationsListRow extends LightningElement {
         }
     }
 
-
+    htmlDecode(input) {
+        var doc = new DOMParser().parseFromString(input, "text/html");
+        return doc.documentElement.textContent;
+    }
 
 }

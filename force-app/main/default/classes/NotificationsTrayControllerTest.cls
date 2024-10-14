@@ -23,11 +23,11 @@ private class NotificationsTrayControllerTest {
     
         System.assertNotEquals(null, res.get('mostRecentNotifications'));
 
-        res = (Map<String,Object>)NotificationsTrayController.markNotificationsRead('2024-01-22T19:09:28.298Z');
+        res = (Map<String,Object>)NotificationsTrayController.markNotificationsRead('2024-01-22T19:09:28.298Z', 10, 30, null);
 
         System.assertNotEquals(null, res.get('mostRecentNotifications'));
 
-        res = (Map<String,Object>)NotificationsTrayController.markNotificationsSeen('2024-01-22T19:09:28.298Z');
+        res = (Map<String,Object>)NotificationsTrayController.markNotificationsSeen('2024-01-22T19:09:28.298Z', 10, 30, null);
 
         System.assertNotEquals(null, res.get('mostRecentNotifications'));
 

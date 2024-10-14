@@ -750,6 +750,9 @@ export default class Notifications extends NavigationMixin(LightningElement) {
                 notificationsStore.markAllSeen(beforeDateTime, []);
                 let params = {};
                 params.beforeDateTime = beforeDateTime;
+                params.numDays = this._numDays;
+                params.maxNumNotifications = this._maxNumNotifications;
+                params.notificationType = this.customNotificationTypesFilter;
                 const notifications = await markNotificationsSeen(params);
                 if (notifications && notifications.mostRecentNotifications) {
                     this.updateNotifications(notifications.mostRecentNotifications);
@@ -774,6 +777,9 @@ export default class Notifications extends NavigationMixin(LightningElement) {
             notificationsStore.markAllRead(beforeDateTime, []);
             let params = {};
             params.beforeDateTime = beforeDateTime;
+            params.numDays = this._numDays;
+            params.maxNumNotifications = this._maxNumNotifications;
+            params.notificationType = this.customNotificationTypesFilter;
             const notifications = await markNotificationsRead(params);
             if (notifications && notifications.mostRecentNotifications) {
                 this.updateNotifications(notifications.mostRecentNotifications);

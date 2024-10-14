@@ -210,4 +210,5 @@ export default class NotificationsTitle extends LightningElement {
         );
         this.dispatchEvent(closePanelEvent);
     }
+
 }
