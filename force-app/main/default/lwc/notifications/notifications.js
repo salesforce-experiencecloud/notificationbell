@@ -49,7 +49,6 @@ export default class Notifications extends NavigationMixin(LightningElement) {
     @track _unseenCount = 0;
     @track _unreadCount = 0;
     @track _maxNumNotifications = 50;
-    @track _numDays = 30;
 
     
     notificationsEnabled = !isGuest;
@@ -691,7 +690,6 @@ export default class Notifications extends NavigationMixin(LightningElement) {
             {
                 // metrics for server call
                 let params = {};
-                params.numDays = this._numDays;
                 params.maxNumNotifications = this._maxNumNotifications;
                 params.notificationType = this.customNotificationTypesFilter;
                 const notifications = await getNotifications(params);
@@ -750,7 +748,6 @@ export default class Notifications extends NavigationMixin(LightningElement) {
                 notificationsStore.markAllSeen(beforeDateTime, []);
                 let params = {};
                 params.beforeDateTime = beforeDateTime;
-                params.numDays = this._numDays;
                 params.maxNumNotifications = this._maxNumNotifications;
                 params.notificationType = this.customNotificationTypesFilter;
                 const notifications = await markNotificationsSeen(params);
@@ -777,7 +774,6 @@ export default class Notifications extends NavigationMixin(LightningElement) {
             notificationsStore.markAllRead(beforeDateTime, []);
             let params = {};
             params.beforeDateTime = beforeDateTime;
-            params.numDays = this._numDays;
             params.maxNumNotifications = this._maxNumNotifications;
             params.notificationType = this.customNotificationTypesFilter;
             const notifications = await markNotificationsRead(params);
