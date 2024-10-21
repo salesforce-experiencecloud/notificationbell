@@ -49,7 +49,7 @@ export default class Notifications extends NavigationMixin(LightningElement) {
     @track _unseenCount = 0;
     @track _unreadCount = 0;
     @track _maxNumNotifications = 50;
-    @track _numDays = 30;
+    @track _numDays = null;
 
     
     notificationsEnabled = !isGuest;
